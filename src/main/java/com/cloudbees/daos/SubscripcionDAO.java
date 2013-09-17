@@ -24,15 +24,19 @@ public class SubscripcionDAO {
 		try {
 			Statement estatuto = (Statement) conex.getConnection()
 					.createStatement();
-			estatuto.executeUpdate("INSERT INTO subscripcion VALUES ('"
-					+ subscripcion.getSubcripcionId() + "', '"
+			if (subscripcion.getSubcripcionId() != null){
+				estatuto.executeUpdate("UPDATE subscripcion SET URL='"+
+						subscripcion.getUrl() + "' WHERE id="+
+						subscripcion.getSubcripcionId().toString());
+			} else{
+				estatuto.executeUpdate("INSERT INTO subscripcion VALUES ('"
 					+ subscripcion.getUrl() + "')");
+			}
 			JOptionPane.showMessageDialog(null,
-					"Se ha registrado Exitosamente", "Información",
+					"Se ha registrado Exitosamente", "Informaciï¿½n",
 					JOptionPane.INFORMATION_MESSAGE);
 			estatuto.close();
 			conex.desconectar();
-
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			JOptionPane.showMessageDialog(null, "No se Registro la persona");

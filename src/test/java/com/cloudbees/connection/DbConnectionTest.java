@@ -11,9 +11,7 @@ public class DbConnectionTest extends TestCase {
 	@Test
 	public void testGetConnection() {
 		Connection connection = new DbConnection().getConnection();
-
 		assertNotNull(connection);
-
 	}
 
 	@Test
@@ -22,7 +20,6 @@ public class DbConnectionTest extends TestCase {
 		dbConnection.desconectar();
 		Connection connection = dbConnection.getConnection();
 		assertNull(connection);
-
 	}
 
 }

@@ -21,7 +21,6 @@ public class SubscripcionDAOTest {
 		for (Subscripcion subs : listarSubcripciones) {
 			System.out.println("ID:" + subs.getSubcripcionId() + "\n" + "URL:"
 					+ subs.getUrl());
-
 		}
 
 	}
