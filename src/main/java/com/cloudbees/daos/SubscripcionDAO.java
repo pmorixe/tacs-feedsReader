@@ -19,7 +19,7 @@ public class SubscripcionDAO {
 	 * 
 	 * @param subscripcion
 	 */
-	public void registrarPersona(Subscripcion subscripcion) {
+	public void registrarSubscripcion(Subscripcion subscripcion) {
 		DbConnection conex = new DbConnection();
 		try {
 			Statement estatuto = (Statement) conex.getConnection()

@@ -13,7 +13,7 @@ public class SubscripcionDAOTest {
 		Subscripcion subscripcion = new Subscripcion(new Long(1),
 				"www.tuvieja.com");
 		SubscripcionDAO subscripcionDAO = new SubscripcionDAO();
-		subscripcionDAO.registrarPersona(subscripcion);
+		subscripcionDAO.registrarSubscripcion(subscripcion);
 
 		List<Subscripcion> listarSubcripciones = subscripcionDAO
 				.listarSubcripciones();
