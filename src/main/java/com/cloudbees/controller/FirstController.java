@@ -13,6 +13,6 @@ public class FirstController {
     @RequestMapping(method = RequestMethod.GET)
     public String printWelcome(ModelMap model) {
 		model.addAttribute("message", "Spring MVC");
-        return "hello";
+        return "hello prueba ble";
     }
 }
