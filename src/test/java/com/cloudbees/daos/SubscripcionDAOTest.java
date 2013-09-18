@@ -1,5 +1,6 @@
 package com.cloudbees.daos;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.junit.Test;
@@ -8,20 +9,14 @@ import com.cloudbees.models.Subscripcion;
 
 public class SubscripcionDAOTest {
 
-	@Test
-	public void testRegistrarSubscripcion() {
+	public void testRegistrarSubscripcion() throws SQLException {
 		Subscripcion subscripcion = new Subscripcion(new Long(1),
-				"www.tuvieja.com");
+				"www.algo.com");
 		SubscripcionDAO subscripcionDAO = new SubscripcionDAO();
 		subscripcionDAO.registrarSubscripcion(subscripcion);
 
 		List<Subscripcion> listarSubcripciones = subscripcionDAO
 				.listarSubcripciones();
-
-		for (Subscripcion subs : listarSubcripciones) {
-			System.out.println("ID:" + subs.getSubcripcionId() + "\n" + "URL:"
-					+ subs.getUrl());
-		}
-
+		//assert(listarSubcripciones.size() > 0);
 	}
 }

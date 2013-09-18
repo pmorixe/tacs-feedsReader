@@ -4,9 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.JOptionPane;
-
 import com.cloudbees.connection.DbConnection;
 import com.cloudbees.models.Subscripcion;
 import com.mysql.jdbc.PreparedStatement;
@@ -18,29 +15,22 @@ public class SubscripcionDAO {
 	 * Permite registrar una subscripcion
 	 * 
 	 * @param subscripcion
+	 * @throws SQLException 
 	 */
-	public void registrarSubscripcion(Subscripcion subscripcion) {
+	public void registrarSubscripcion(Subscripcion subscripcion) throws SQLException {
 		DbConnection conex = new DbConnection();
-		try {
-			Statement estatuto = (Statement) conex.getConnection()
-					.createStatement();
-			if (subscripcion.getSubcripcionId() != null){
-				estatuto.executeUpdate("UPDATE subscripcion SET URL='"+
-						subscripcion.getUrl() + "' WHERE id="+
-						subscripcion.getSubcripcionId().toString());
-			} else{
-				estatuto.executeUpdate("INSERT INTO subscripcion VALUES ('"
-					+ subscripcion.getUrl() + "')");
-			}
-			JOptionPane.showMessageDialog(null,
-					"Se ha registrado Exitosamente", "Informaci�n",
-					JOptionPane.INFORMATION_MESSAGE);
-			estatuto.close();
-			conex.desconectar();
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-			JOptionPane.showMessageDialog(null, "No se Registro la persona");
+		Statement estatuto = (Statement) conex.getConnection()
+				.createStatement();
+		if (subscripcion.getSubcripcionId() != null){
+			estatuto.executeUpdate("UPDATE subscripcion SET URL='"+
+					subscripcion.getUrl() + "' WHERE id="+
+					subscripcion.getSubcripcionId().toString());
+		} else{
+			estatuto.executeUpdate("INSERT INTO subscripcion VALUES ('"
+				+ subscripcion.getUrl() + "')");
 		}
+		estatuto.close();
+		conex.desconectar(); 
 	}
 
 	/**
@@ -48,63 +38,52 @@ public class SubscripcionDAO {
 	 * 
 	 * @param subscripcionId
 	 * @return
+	 * @throws SQLException 
 	 */
-	public List<Subscripcion> consultarSubscripion(Long subscripcionId) {
+	public List<Subscripcion> consultarSubscripion(Long subscripcionId) throws SQLException {
 		List<Subscripcion> subscripciones = new ArrayList<Subscripcion>();
 		DbConnection conex = new DbConnection();
 
-		try {
-			PreparedStatement consulta = (PreparedStatement) conex
-					.getConnection().prepareStatement(
-							"SELECT * FROM subscripcion where id = ? ");
-			consulta.setInt(1, subscripcionId.intValue());
-			ResultSet res = consulta.executeQuery();
+		PreparedStatement consulta = (PreparedStatement) conex
+				.getConnection().prepareStatement(
+						"SELECT * FROM subscripcion where id = ? ");
+		consulta.setInt(1, subscripcionId.intValue());
+		ResultSet res = consulta.executeQuery();
 
-			if (res.next()) {
-				Subscripcion subscripcion = new Subscripcion();
-				subscripcion.setSubcripcionId(Long.parseLong(res
-						.getString("id")));
-				subscripcion.setUrl(res.getString("url"));
+		if (res.next()) {
+			Subscripcion subscripcion = new Subscripcion();
+			subscripcion.setSubcripcionId(Long.parseLong(res
+					.getString("id")));
+			subscripcion.setUrl(res.getString("url"));
 
-				subscripciones.add(subscripcion);
-			}
-			res.close();
-			consulta.close();
-			conex.desconectar();
-
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null,
-					"no se pudo consultar la Persona\n" + e);
+			subscripciones.add(subscripcion);
 		}
+		res.close();
+		consulta.close();
+		conex.desconectar();
 		return subscripciones;
 	}
 
-	public List<Subscripcion> listarSubcripciones() {
+	public List<Subscripcion> listarSubcripciones() throws SQLException {
 		List<Subscripcion> subscripciones = new ArrayList<Subscripcion>();
 		DbConnection conex = new DbConnection();
 
-		try {
-			PreparedStatement consulta = (PreparedStatement) conex
-					.getConnection().prepareStatement(
-							"SELECT * FROM subscripcion");
-			ResultSet res = consulta.executeQuery();
+		PreparedStatement consulta = (PreparedStatement) conex
+				.getConnection().prepareStatement(
+						"SELECT * FROM subscripcion");
+		ResultSet res = consulta.executeQuery();
 
-			while (res.next()) {
-				Subscripcion subscripcion = new Subscripcion();
-				subscripcion.setSubcripcionId(Long.parseLong(res
-						.getString("id")));
-				subscripcion.setUrl(res.getString("url"));
+		while (res.next()) {
+			Subscripcion subscripcion = new Subscripcion();
+			subscripcion.setSubcripcionId(Long.parseLong(res
+					.getString("id")));
+			subscripcion.setUrl(res.getString("url"));
 
-				subscripciones.add(subscripcion);
-			}
-			res.close();
-			consulta.close();
-			conex.desconectar();
-
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null,
-					"no se pudo consultar la Persona\n" + e);
+			subscripciones.add(subscripcion);
 		}
+		res.close();
+		consulta.close();
+		conex.desconectar();
 		return subscripciones;
 	}
 
