@@ -16,30 +16,19 @@
 <body>
 <div class="container">  
 	<h1>
-		Feeds Reader
+		TACS Feeds Reader (90's style)
 	</h1>
 	<p>
-		Locale = ${pageContext.response.locale}
-	</p>
-	<p>
 		<ul>
-			<li><a href="userAccount">Datos Usuario</a></li>
+			<li><a href="subscription/add">Subscribe to a new feed</a></li>
 		</ul>
 	</p>
 	<p>
 		<ul>
-			<li><a href="addFeed">Agregar Feed</a></li>
-		</ul>
-	</p>
-	<p>
-		<ul>
-			<li><a href="listFeed">Listar Feeds</a></li>
+			<li><a href="subscription/list">Show me the feeds I'm subscribed to</a></li>
 		</ul>
 	</p>
 	<hr>	
-	<ul>
-		<li> <a href="?locale=en_us">us</a> |  <a href="?locale=en_gb">gb</a> | <a href="?locale=es_es">es</a> | <a href="?locale=de_de">de</a> </li>
-	</ul>
 </div>
 </body>
 </html>

@@ -5,31 +5,29 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.cloudbees.connection.DbConnection;
-import com.cloudbees.models.Subscripcion;
+import com.cloudbees.models.Subscription;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
 
-public class SubscripcionDAO {
+public class SubscriptionDAO {
 
 	/**
-	 * Permite registrar una subscripcion
-	 * 
-	 * @param subscripcion
+	 * @param subscription
 	 * @throws SQLException 
 	 */
-	public void registrarSubscripcion(Subscripcion subscripcion) throws SQLException {
+	public void save(Subscription subscription) throws SQLException {
 		DbConnection conex = new DbConnection();
-		Statement estatuto = (Statement) conex.getConnection()
+		Statement statement = (Statement) conex.getConnection()
 				.createStatement();
-		if (subscripcion.getSubcripcionId() != null){
-			estatuto.executeUpdate("UPDATE subscripcion SET URL='"+
-					subscripcion.getUrl() + "' WHERE id="+
-					subscripcion.getSubcripcionId().toString());
+		if (subscription.getId() != null){
+			statement.executeUpdate("UPDATE subscription SET URL='"+
+					subscription.getUrl() + "' WHERE id="+
+					subscription.getId().toString());
 		} else{
-			estatuto.executeUpdate("INSERT INTO subscripcion VALUES ('"
-				+ subscripcion.getUrl() + "')");
+			statement.executeUpdate("INSERT INTO subscription (url) VALUES ('"
+				+ subscription.getUrl() + "')");
 		}
-		estatuto.close();
+		statement.close();
 		conex.desconectar(); 
 	}
 
@@ -40,19 +38,19 @@ public class SubscripcionDAO {
 	 * @return
 	 * @throws SQLException 
 	 */
-	public List<Subscripcion> consultarSubscripion(Long subscripcionId) throws SQLException {
-		List<Subscripcion> subscripciones = new ArrayList<Subscripcion>();
+	public List<Subscription> consultarSubscripion(Long subscripcionId) throws SQLException {
+		List<Subscription> subscripciones = new ArrayList<Subscription>();
 		DbConnection conex = new DbConnection();
 
 		PreparedStatement consulta = (PreparedStatement) conex
 				.getConnection().prepareStatement(
-						"SELECT * FROM subscripcion where id = ? ");
+						"SELECT * FROM subscription where id = ? ");
 		consulta.setInt(1, subscripcionId.intValue());
 		ResultSet res = consulta.executeQuery();
 
 		if (res.next()) {
-			Subscripcion subscripcion = new Subscripcion();
-			subscripcion.setSubcripcionId(Long.parseLong(res
+			Subscription subscripcion = new Subscription();
+			subscripcion.setId(Long.parseLong(res
 					.getString("id")));
 			subscripcion.setUrl(res.getString("url"));
 
@@ -64,18 +62,18 @@ public class SubscripcionDAO {
 		return subscripciones;
 	}
 
-	public List<Subscripcion> listarSubcripciones() throws SQLException {
-		List<Subscripcion> subscripciones = new ArrayList<Subscripcion>();
+	public List<Subscription> listarSubcripciones() throws SQLException {
+		List<Subscription> subscripciones = new ArrayList<Subscription>();
 		DbConnection conex = new DbConnection();
 
 		PreparedStatement consulta = (PreparedStatement) conex
 				.getConnection().prepareStatement(
-						"SELECT * FROM subscripcion");
+						"SELECT * FROM subscription");
 		ResultSet res = consulta.executeQuery();
 
 		while (res.next()) {
-			Subscripcion subscripcion = new Subscripcion();
-			subscripcion.setSubcripcionId(Long.parseLong(res
+			Subscription subscripcion = new Subscription();
+			subscripcion.setId(Long.parseLong(res
 					.getString("id")));
 			subscripcion.setUrl(res.getString("url"));
 
