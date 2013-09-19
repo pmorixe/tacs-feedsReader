@@ -24,7 +24,7 @@ public class SubscriptionController {
 		return "subscription/add";
 	}
 	@RequestMapping(value="/add",method=RequestMethod.POST)
-	public String postaddSubscription(@Valid Subscription subscription, BindingResult result) throws SQLException {
+	public String postaddSubscription(@Valid Subscription subscription, BindingResult result) throws Exception {
 		if (result.hasErrors()) {
 			return "subscription/add";
 		}
@@ -33,7 +33,7 @@ public class SubscriptionController {
 		return "redirect:/";
 	}
 	@RequestMapping(value="/list",method=RequestMethod.GET)
-	public String getlistSubscription(Model model) throws SQLException {
+	public String getlistSubscription(Model model) throws Exception {
 		SubscriptionDAO subscriptionDAO = new SubscriptionDAO();
 		model.addAttribute("subscriptions", subscriptionDAO.listarSubcripciones());
 		return "subscription/list";

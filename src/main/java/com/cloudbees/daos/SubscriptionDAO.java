@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.cloudbees.connection.DbConnection;
 import com.cloudbees.models.Subscription;
 import com.mysql.jdbc.PreparedStatement;
@@ -13,9 +14,9 @@ public class SubscriptionDAO {
 
 	/**
 	 * @param subscription
-	 * @throws SQLException 
+	 * @throws Exception 
 	 */
-	public void save(Subscription subscription) throws SQLException {
+	public void save(Subscription subscription) throws Exception {
 		DbConnection conex = new DbConnection();
 		Statement statement = (Statement) conex.getConnection()
 				.createStatement();
@@ -36,9 +37,9 @@ public class SubscriptionDAO {
 	 * 
 	 * @param subscripcionId
 	 * @return
-	 * @throws SQLException 
+	 * @throws Exception 
 	 */
-	public List<Subscription> consultarSubscripion(Long subscripcionId) throws SQLException {
+	public List<Subscription> consultarSubscripion(Long subscripcionId) throws Exception {
 		List<Subscription> subscripciones = new ArrayList<Subscription>();
 		DbConnection conex = new DbConnection();
 
@@ -62,7 +63,7 @@ public class SubscriptionDAO {
 		return subscripciones;
 	}
 
-	public List<Subscription> listarSubcripciones() throws SQLException {
+	public List<Subscription> listarSubcripciones() throws Exception {
 		List<Subscription> subscripciones = new ArrayList<Subscription>();
 		DbConnection conex = new DbConnection();
 

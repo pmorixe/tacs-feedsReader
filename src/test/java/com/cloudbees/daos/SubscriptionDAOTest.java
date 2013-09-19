@@ -9,7 +9,7 @@ import com.cloudbees.models.Subscription;
 
 public class SubscriptionDAOTest {
 
-	public void testRegistrarSubscripcion() throws SQLException {
+	public void testRegistrarSubscripcion() throws Exception {
 		Subscription subscripcion = new Subscription(new Long(1),
 				"www.algo.com");
 		SubscriptionDAO subscriptionDAO = new SubscriptionDAO();
