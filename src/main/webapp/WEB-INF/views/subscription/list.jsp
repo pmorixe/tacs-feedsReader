@@ -29,11 +29,15 @@
 					<td>
 						URL
 					</td>
+					<td>
+						Since
+					</td>
 				</tr>
 					     <c:forEach items="${subscriptions}" var="subscription">
 					     <tr>
 					       <td>${subscription.id}</td>
 					       <td>${subscription.url}</td>
+					       <td>${subscription.since}</td>
 					       </tr>
 					    </c:forEach>
 				</table>
@@ -42,5 +46,6 @@
 	</div>
 	<hr>	
 </div>
+<a href="/" >Back to home</a>
 </body>
 </html>

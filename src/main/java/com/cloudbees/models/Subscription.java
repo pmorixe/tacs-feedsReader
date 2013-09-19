@@ -1,10 +1,16 @@
 package com.cloudbees.models;
 
+import java.text.spi.DateFormatProvider;
+
+import org.joda.time.DateTime;
+
 public class Subscription {
 
 	private Long id;
 
 	private String url;
+	
+	private DateTime since = new DateTime();
 
 	public Subscription() {
 	}
@@ -28,6 +34,14 @@ public class Subscription {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public DateTime getSince() {
+		return since;
+	}
+
+	public void setSince(DateTime since) {
+		this.since = since;
 	}
 
 }

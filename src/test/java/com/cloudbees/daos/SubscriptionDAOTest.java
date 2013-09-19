@@ -8,7 +8,8 @@ import org.junit.Test;
 import com.cloudbees.models.Subscription;
 
 public class SubscriptionDAOTest {
-
+	
+	@Test
 	public void testRegistrarSubscripcion() throws Exception {
 		Subscription subscripcion = new Subscription(new Long(1),
 				"www.algo.com");
@@ -17,6 +18,6 @@ public class SubscriptionDAOTest {
 
 		List<Subscription> listarSubcripciones = subscriptionDAO
 				.listarSubcripciones();
-		//assert(listarSubcripciones.size() > 0);
+		assert(listarSubcripciones.size() > 0);
 	}
 }

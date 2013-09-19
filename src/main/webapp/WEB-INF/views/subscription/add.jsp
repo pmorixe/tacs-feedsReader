@@ -33,5 +33,6 @@
 	</div>
 	<hr>	
 </div>
+<a href="/" >Back to home</a>
 </body>
 </html>

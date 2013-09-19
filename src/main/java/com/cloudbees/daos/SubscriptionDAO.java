@@ -2,8 +2,17 @@ package com.cloudbees.daos;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.text.spi.DateFormatProvider;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import javax.swing.text.DateFormatter;
+
+import org.apache.log4j.lf5.util.DateFormatManager;
+import org.joda.time.DateTime;
 
 import com.cloudbees.connection.DbConnection;
 import com.cloudbees.models.Subscription;
@@ -21,12 +30,13 @@ public class SubscriptionDAO {
 		Statement statement = (Statement) conex.getConnection()
 				.createStatement();
 		if (subscription.getId() != null){
-			statement.executeUpdate("UPDATE subscription SET URL='"+
-					subscription.getUrl() + "' WHERE id="+
+			statement.executeUpdate("UPDATE subscription "+
+					" SET URL='"+subscription.getUrl() + "'"+
+					" WHERE id="+
 					subscription.getId().toString());
 		} else{
 			statement.executeUpdate("INSERT INTO subscription (url) VALUES ('"
-				+ subscription.getUrl() + "')");
+				+ subscription.getUrl() +"')");
 		}
 		statement.close();
 		conex.desconectar(); 
@@ -54,7 +64,7 @@ public class SubscriptionDAO {
 			subscripcion.setId(Long.parseLong(res
 					.getString("id")));
 			subscripcion.setUrl(res.getString("url"));
-
+			subscripcion.setSince(new DateTime(res.getString("since")));
 			subscripciones.add(subscripcion);
 		}
 		res.close();
@@ -77,7 +87,9 @@ public class SubscriptionDAO {
 			subscripcion.setId(Long.parseLong(res
 					.getString("id")));
 			subscripcion.setUrl(res.getString("url"));
-
+			SimpleDateFormat dateValue = new SimpleDateFormat("yyyy-mm-dd");
+			Date fecha = dateValue.parse(res.getString("since"));
+			subscripcion.setSince(new DateTime(fecha));
 			subscripciones.add(subscripcion);
 		}
 		res.close();
