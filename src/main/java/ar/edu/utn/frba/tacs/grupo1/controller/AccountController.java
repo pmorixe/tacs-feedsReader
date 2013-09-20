@@ -1,4 +1,4 @@
-package com.cloudbees.controllers;
+package ar.edu.utn.frba.tacs.grupo1.controller;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.cloudbees.models.Account;
+import ar.edu.utn.frba.tacs.grupo1.models.Account;
 
 @Controller
 @RequestMapping(value="/userAccount")

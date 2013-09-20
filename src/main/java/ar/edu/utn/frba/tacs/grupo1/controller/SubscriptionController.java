@@ -1,4 +1,4 @@
-package com.cloudbees.controllers;
+package ar.edu.utn.frba.tacs.grupo1.controller;
 
 import java.sql.SQLException;
 
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.cloudbees.daos.SubscriptionDAO;
-import com.cloudbees.models.Account;
-import com.cloudbees.models.Subscription;
+import ar.edu.utn.frba.tacs.grupo1.daos.SubscriptionDAO;
+import ar.edu.utn.frba.tacs.grupo1.models.Account;
+import ar.edu.utn.frba.tacs.grupo1.models.Subscription;
 
 @Controller
 @RequestMapping(value="/subscription")

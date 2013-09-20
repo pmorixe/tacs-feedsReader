@@ -1,4 +1,4 @@
-package com.cloudbees.models;
+package ar.edu.utn.frba.tacs.grupo1.models;
 
 import java.util.concurrent.atomic.AtomicLong;
 import javax.validation.constraints.NotNull;
