@@ -6,9 +6,8 @@
         <param-value>prod</param-value>
     </context-param>
     <resource name="jdbc/database" auth="Container" type="javax.sql.DataSource">
-        <param name="username" value="bees" />
-        <param name="password" value="bees" />
-        <param name="url" value="jdbc:derby://localhost:1527/countries" />
-        <param name="driverClassName" value="org.apache.derby.jdbc.ClientDriver"/>
+        <param name="username" value="tacs2" />
+        <param name="password" value="tacs2" />
+        <param name="url" value="jdbc:mysql://ec2-23-21-211-172.compute-1.amazonaws.com:3306/feedsreader_development" />
     </resource>
 </cloudbees-web-app>
