@@ -1,12 +1,15 @@
 package ar.edu.utn.frba.tacs.grupo1.domain;
 
-import java.text.spi.DateFormatProvider;
 import java.util.Date;
 
-import org.joda.time.DateTime;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-public class Subscription {
-
+public class Subscription  {
+  
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 
 	private String url;
