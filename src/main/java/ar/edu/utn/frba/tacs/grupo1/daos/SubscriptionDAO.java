@@ -65,6 +65,7 @@ public class SubscriptionDAO {
 			subscription.setId(Long.parseLong(res
 					.getString("id")));
 			subscription.setUrl(res.getString("url"));
+
 			subscription.setSince(new DateTime(res.getString("since")).toDate());
 			subscriptions.add(subscription);
 		}
@@ -91,6 +92,7 @@ public class SubscriptionDAO {
 			SimpleDateFormat dateValue = new SimpleDateFormat("YYYY-MM-DD");
 			Date fecha = dateValue.parse(res.getString("since"));
 			DateTime since = new DateTime(fecha);
+
 			subscription.setSince(since.toDate());
 			subscriptions.add(subscription);
 		}
