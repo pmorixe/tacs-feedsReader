@@ -30,7 +30,6 @@ public class HibernateUtilTest {
 	public void testForSelect(){
 	  Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 	  Criteria createCriteria = session.createCriteria(Subscription.class).createCriteria("ID = 8");
-	  session.get(Subscription.class);
 	  
 	}
 	
