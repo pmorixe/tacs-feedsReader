@@ -2,7 +2,12 @@ package ar.edu.utn.frba.tacs.grupo1.connection;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
+import org.apache.commons.collections.Closure;
+import org.apache.commons.collections.CollectionUtils;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.joda.time.DateTime;
 import org.joda.time.chrono.BuddhistChronology;
@@ -27,9 +32,21 @@ public class HibernateUtilTest {
         session.getTransaction().commit();
 	}
 	
+	@SuppressWarnings("unchecked")
+    @Test
 	public void testForSelect(){
 	  Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-	  Criteria createCriteria = session.createCriteria(Subscription.class).createCriteria("ID = 8");
+	  session.beginTransaction();
+	  List<Subscription> result = (List<Subscription>) session.createQuery("from Subscription").list();
+	  session.getTransaction().commit();
+	  CollectionUtils.forAllDo(result, new Closure() {
+        
+        public void execute(Object arg0) {
+          System.out.println(((Subscription)arg0).getUrl());
+        }
+      });
+	  
+	  
 	  
 	}
 	
