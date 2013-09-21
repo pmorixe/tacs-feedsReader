@@ -1,5 +1,6 @@
 package ar.edu.utn.frba.tacs.grupo1.controller;
 
+
 import java.sql.SQLException;
 
 import javax.validation.Valid;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.utn.frba.tacs.grupo1.constant.FeedsReaderConstants;
 import ar.edu.utn.frba.tacs.grupo1.daos.DAO;
 import ar.edu.utn.frba.tacs.grupo1.daos.SubscriptionDAO;
 import ar.edu.utn.frba.tacs.grupo1.domain.Subscription;
@@ -19,7 +21,8 @@ import ar.edu.utn.frba.tacs.grupo1.models.Account;
 @Controller
 @RequestMapping(value="/subscription")
 public class SubscriptionController {
-	@RequestMapping(value="/add",method=RequestMethod.GET)
+	
+  @RequestMapping(value="/add",method=RequestMethod.GET)
 	public String getaddSubscription(Model model) {
 		model.addAttribute(new Subscription());
 		return "subscription/add";
@@ -29,14 +32,12 @@ public class SubscriptionController {
 		if (result.hasErrors()) {
 			return "subscription/add";
 		}
-		DAO subscriptionDAO = new SubscriptionDAO();
-		subscriptionDAO.save(subscription);
+		DAO.save(subscription);
 		return "redirect:/";
 	}
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public String getlistSubscription(Model model) throws Exception {
-		SubscriptionDAO subscriptionDAO = new SubscriptionDAO();
-		model.addAttribute("subscriptions", subscriptionDAO.listSubcripciones());
+		model.addAttribute("subscriptions", DAO.list(FeedsReaderConstants.SUBSCRIPTIONS_ENTITY_NAME));
 		return "subscription/list";
 	}
 }
