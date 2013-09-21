@@ -20,28 +20,7 @@ import ar.edu.utn.frba.tacs.grupo1.domain.Subscription;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
 
-public class SubscriptionDAO {
-
-	/**
-	 * @param subscription
-	 * @throws Exception 
-	 */
-	public void save(Subscription subscription) throws Exception {
-		DbConnection conex = new DbConnection();
-		Statement statement = (Statement) conex.getConnection()
-				.createStatement();
-		if (subscription.getId() != null){
-			statement.executeUpdate("UPDATE subscription "+
-					" SET URL='"+subscription.getUrl() + "'"+
-					" WHERE id="+
-					subscription.getId().toString());
-		} else{
-			statement.executeUpdate("INSERT INTO subscription (url) VALUES ('"
-				+ subscription.getUrl() +"')");
-		}
-		statement.close();
-		conex.disconnect(); 
-	}
+public class SubscriptionDAO  extends DAO{
 
 	/**
 	 * Permite consultar subcripcion a partir de id como parametro

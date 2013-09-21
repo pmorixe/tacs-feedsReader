@@ -22,11 +22,9 @@ public class HibernateUtilTest {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         String unaUrl = "www.urlReloaded2.com";
-        DateTime theDate = new DateTime(BuddhistChronology.getInstance());
 
         Subscription subscription = new Subscription();
 		subscription.setUrl(unaUrl);
-		subscription.setSince(theDate.toDate());
         session.save(subscription);
 
         session.getTransaction().commit();
