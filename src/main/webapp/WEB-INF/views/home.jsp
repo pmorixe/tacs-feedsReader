@@ -20,12 +20,12 @@
 	</h1>
 	<p>
 		<ul>
-			<li><a href="subscription/add">Subscribe to a new feed</a></li>
+			<li><a href="subscription/add">Subscribe to a new channel</a></li>
 		</ul>
 	</p>
 	<p>
 		<ul>
-			<li><a href="subscription/list">Show me the feeds I'm subscribed to</a></li>
+			<li><a href="subscription/list">Show me the channels I'm subscribed to</a></li>
 		</ul>
 	</p>
 	<hr>	
