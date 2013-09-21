@@ -28,7 +28,7 @@ public class SubscriptionController {
 	}
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public String getlistSubscription(Model model) throws Exception {
-		model.addAttribute("subscriptions", DAO.list(FeedsReaderConstants.SUBSCRIPTIONS_ENTITY_NAME));
+		model.addAttribute("subscriptions", DAO.list(Subscription.class));
 		return "subscription/list";
 	}
 }

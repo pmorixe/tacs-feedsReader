@@ -15,7 +15,7 @@ public class SubscriptionDAOTest {
 	}
 	@Test
 	public void testGetSubscriptionsList() throws Exception {
-		DAO.list("Subscription");
+		DAO.list(Subscription.class);
 	}
 	
 }

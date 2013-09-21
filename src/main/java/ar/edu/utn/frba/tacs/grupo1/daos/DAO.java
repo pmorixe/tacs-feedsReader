@@ -20,7 +20,8 @@ public class DAO {
 	    session.getTransaction().commit(); 
 	}
 
-	public static List<?> list(String className){
+	public static List<?> list(@SuppressWarnings("rawtypes") Class clase){
+		String className = clase.getName();
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 	      session.beginTransaction();
 	      List<?> result = (List<?>) session.createQuery("from "+ className).list();
