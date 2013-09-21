@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-public class Subscription  {
+public class Subscription implements Domain {
   
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -54,6 +54,10 @@ public class Subscription  {
 
 	public void setFeeds(Set<Feed> feeds) {
 		this.feeds = feeds;
+	}
+	public void addToFeeds(Feed feed) {
+		feed.setSubscription(this);
+		this.feeds.add(feed);
 	}
 	private Set<Feed> feeds = new HashSet<Feed>(0);
 
