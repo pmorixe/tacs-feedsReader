@@ -40,7 +40,7 @@ public class SubscriptionDAO {
 				+ subscription.getUrl() +"')");
 		}
 		statement.close();
-		conex.desconectar(); 
+		conex.disconnect(); 
 	}
 
 	/**
@@ -50,54 +50,54 @@ public class SubscriptionDAO {
 	 * @return
 	 * @throws Exception 
 	 */
-	public List<Subscription> consultarSubscripion(Long subscripcionId) throws Exception {
-		List<Subscription> subscripciones = new ArrayList<Subscription>();
+	public List<Subscription> getSubscriptions(Long subscripcionId) throws Exception {
+		List<Subscription> subscriptions = new ArrayList<Subscription>();
 		DbConnection conex = new DbConnection();
 
-		PreparedStatement consulta = (PreparedStatement) conex
+		PreparedStatement query = (PreparedStatement) conex
 				.getConnection().prepareStatement(
 						"SELECT * FROM subscription where id = ? ");
-		consulta.setInt(1, subscripcionId.intValue());
-		ResultSet res = consulta.executeQuery();
+		query.setInt(1, subscripcionId.intValue());
+		ResultSet res = query.executeQuery();
 
 		if (res.next()) {
-			Subscription subscripcion = new Subscription();
-			subscripcion.setId(Long.parseLong(res
+			Subscription subscription = new Subscription();
+			subscription.setId(Long.parseLong(res
 					.getString("id")));
-			subscripcion.setUrl(res.getString("url"));
-			subscripcion.setSince(new DateTime(res.getString("since")));
-			subscripciones.add(subscripcion);
+			subscription.setUrl(res.getString("url"));
+			subscription.setSince(new DateTime(res.getString("since")));
+			subscriptions.add(subscription);
 		}
 		res.close();
-		consulta.close();
-		conex.desconectar();
-		return subscripciones;
+		query.close();
+		conex.disconnect();
+		return subscriptions;
 	}
 
-	public List<Subscription> listarSubcripciones() throws Exception {
-		List<Subscription> subscripciones = new ArrayList<Subscription>();
-		DbConnection conex = new DbConnection();
+	public List<Subscription> listSubcripciones() throws Exception {
+		List<Subscription> subscriptions = new ArrayList<Subscription>();
+		DbConnection connection = new DbConnection();
 
-		PreparedStatement consulta = (PreparedStatement) conex
+		PreparedStatement query = (PreparedStatement) connection
 				.getConnection().prepareStatement(
 						"SELECT * FROM subscription");
-		ResultSet res = consulta.executeQuery();
+		ResultSet res = query.executeQuery();
 
 		while (res.next()) {
-			Subscription subscripcion = new Subscription();
-			subscripcion.setId(Long.parseLong(res
+			Subscription subscription = new Subscription();
+			subscription.setId(Long.parseLong(res
 					.getString("id")));
-			subscripcion.setUrl(res.getString("url"));
+			subscription.setUrl(res.getString("url"));
 			SimpleDateFormat dateValue = new SimpleDateFormat("YYYY-MM-DD");
 			Date fecha = dateValue.parse(res.getString("since"));
 			DateTime since = new DateTime(fecha);
-			subscripcion.setSince(since);
-			subscripciones.add(subscripcion);
+			subscription.setSince(since);
+			subscriptions.add(subscription);
 		}
 		res.close();
-		consulta.close();
-		conex.desconectar();
-		return subscripciones;
+		query.close();
+		connection.disconnect();
+		return subscriptions;
 	}
 
 }
