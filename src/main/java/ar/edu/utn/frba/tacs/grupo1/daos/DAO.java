@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import ar.edu.utn.frba.tacs.grupo1.connection.HibernateUtil;
+import ar.edu.utn.frba.tacs.grupo1.hibernate.HibernateUtil;
 import ar.edu.utn.frba.tacs.grupo1.domain.Subscription;
 
 public class DAO {

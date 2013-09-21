@@ -1,4 +1,4 @@
-package ar.edu.utn.frba.tacs.grupo1.connection;
+package ar.edu.utn.frba.tacs.grupo1.hibernate;
 
 import java.util.List;
 import org.apache.commons.collections.Closure;
@@ -6,7 +6,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.hibernate.Session;
 import org.junit.Test;
 
-import ar.edu.utn.frba.tacs.grupo1.connection.HibernateUtil;
+import ar.edu.utn.frba.tacs.grupo1.hibernate.HibernateUtil;
 import ar.edu.utn.frba.tacs.grupo1.domain.Subscription;
 
 public class HibernateUtilTest {

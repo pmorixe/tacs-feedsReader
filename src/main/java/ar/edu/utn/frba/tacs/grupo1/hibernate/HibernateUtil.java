@@ -1,4 +1,4 @@
-package ar.edu.utn.frba.tacs.grupo1.connection;
+package ar.edu.utn.frba.tacs.grupo1.hibernate;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
