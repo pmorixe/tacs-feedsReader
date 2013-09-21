@@ -13,6 +13,10 @@
         <property name="link"/>
         <property name="description"/>
         <property name="title"/>
-        
+        <property name="idSubscription"/>
+        <!-- <many-to-one name="subscription" class="ar.edu.utn.frba.tacs.grupo1.domain.Subscription"
+        	fetch="select">
+            <column name="idSubscription" not-null="true" />
+        </many-to-one> -->
    </class>
 </hibernate-mapping>

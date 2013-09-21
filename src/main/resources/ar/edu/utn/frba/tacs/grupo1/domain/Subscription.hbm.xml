@@ -13,6 +13,12 @@
         <property name="url"/>
         
         <property name="since" type="timestamp" column="SINCE"/>
-        
+        <!-- <set name="feeds" table="feed" 
+				inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idSubscription" not-null="true" />
+            </key>
+            <one-to-many class="ar.edu.utn.frba.tacs.grupo1.domain.Feed" />
+        </set> -->
     </class>
 </hibernate-mapping>

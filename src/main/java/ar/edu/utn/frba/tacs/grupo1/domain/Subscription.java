@@ -1,6 +1,8 @@
 package ar.edu.utn.frba.tacs.grupo1.domain;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -47,5 +49,6 @@ public class Subscription  {
 	public void setSince(Date since) {
 		this.since = since;
 	}
+	private Set<Feed> feeds = new HashSet<Feed>(0);
 
 }

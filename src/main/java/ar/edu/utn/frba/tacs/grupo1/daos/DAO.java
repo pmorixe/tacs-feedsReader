@@ -19,16 +19,13 @@ public class DAO {
 	    session.save(objeto);
 	    session.getTransaction().commit(); 
 	}
-	
-	public static List<?> list(Object instancia){
-	  String className = instancia.getClass().getName();
-	  Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-      session.beginTransaction();      
-      @SuppressWarnings("unchecked")
-	List<Object> result = (List<Object>) session.createQuery("from "+ className).list();
-      session.getTransaction().commit();
-      
-      return result;
+
+	public static List<?> list(String className){
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	      session.beginTransaction();
+	      List<?> result = (List<?>) session.createQuery("from "+ className).list();
+	      session.getTransaction().commit();
+	      return result;
 	}
 
 }
