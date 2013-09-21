@@ -1,11 +1,18 @@
 package ar.edu.utn.frba.tacs.grupo1.domain;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 public class Feed {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	private String title;
 	private String link;
 	private String description;
 	private Subscription subscription;
+	private int idSubscription;
 	public int getId() {
 		return id;
 	}
@@ -29,5 +36,17 @@ public class Feed {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public Subscription getSubscription() {
+		return subscription;
+	}
+	public void setSubscription(Subscription subscription) {
+		this.subscription = subscription;
+	}
+	public int getIdSubscription() {
+		return idSubscription;
+	}
+	public void setIdSubscription(int idSubscription) {
+		this.idSubscription = idSubscription;
 	}
 }

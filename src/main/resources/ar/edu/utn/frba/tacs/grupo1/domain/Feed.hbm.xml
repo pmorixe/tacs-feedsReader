@@ -17,6 +17,6 @@
         <!-- <many-to-one name="subscription" class="ar.edu.utn.frba.tacs.grupo1.domain.Subscription"
         	fetch="select">
             <column name="idSubscription" not-null="true" />
-        </many-to-one> -->
+        </many-to-one>  -->
    </class>
 </hibernate-mapping>

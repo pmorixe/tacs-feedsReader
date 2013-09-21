@@ -22,7 +22,6 @@ public class Subscription  {
 	}
 
 	public Subscription(String url) {
-		this.id = id;
 		this.url = url;
 	}
 
@@ -48,6 +47,13 @@ public class Subscription  {
 
 	public void setSince(Date since) {
 		this.since = since;
+	}
+	public Set<Feed> getFeeds() {
+		return feeds;
+	}
+
+	public void setFeeds(Set<Feed> feeds) {
+		this.feeds = feeds;
 	}
 	private Set<Feed> feeds = new HashSet<Feed>(0);
 

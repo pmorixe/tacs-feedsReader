@@ -125,9 +125,7 @@
             <version>4.1.0.Final</version>
         </dependency>
 
-      
-
-        <!-- Hibernate uses slf4j for logging, for our purposes here use the simple backend -->
+           <!-- Hibernate uses slf4j for logging, for our purposes here use the simple backend -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
@@ -140,6 +138,11 @@
             <artifactId>javassist</artifactId>
             <version>3.12.1.GA</version>
         </dependency>
+        <dependency>
+	      <groupId>informa</groupId>
+	      <artifactId>informa</artifactId>
+	      <version>0.6.0</version>
+	    </dependency>
   </dependencies>
 	
 	<repositories>

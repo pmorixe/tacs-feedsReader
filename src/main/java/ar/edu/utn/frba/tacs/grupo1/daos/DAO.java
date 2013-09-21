@@ -15,7 +15,7 @@ public class DAO {
 	 */
 	public static void save(Object objeto) throws Exception {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-	    session.beginTransaction();
+	    session.getTransaction().begin();
 	    session.save(objeto);
 	    session.getTransaction().commit(); 
 	}
@@ -23,7 +23,7 @@ public class DAO {
 	public static List<?> list(@SuppressWarnings("rawtypes") Class clase){
 		String className = clase.getName();
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-	      session.beginTransaction();
+	      session.getTransaction().begin();
 	      List<?> result = (List<?>) session.createQuery("from "+ className).list();
 	      session.getTransaction().commit();
 	      return result;
