@@ -14,9 +14,5 @@
         
         <property name="since" type="timestamp" column="SINCE"/>
         
-        <set name="feeds" table="Feed" cascade="all">
-			<key column="idSubscription" />
-			<many-to-many column="PHONE_ID" unique="true" class="com.vaannila.student.Phone" />
-		</set>
     </class>
 </hibernate-mapping>

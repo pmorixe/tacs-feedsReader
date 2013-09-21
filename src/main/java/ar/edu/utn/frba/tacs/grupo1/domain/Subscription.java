@@ -10,7 +10,7 @@ public class Subscription  {
   
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private int id;
 
 	private String url;
 	
@@ -19,7 +19,7 @@ public class Subscription  {
 	public Subscription() {
 	}
 
-	public Subscription(Long id, String url) {
+	public Subscription(String url) {
 		this.id = id;
 		this.url = url;
 	}
@@ -32,11 +32,11 @@ public class Subscription  {
 		this.url = url;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

@@ -43,11 +43,5 @@ public class HibernateUtilTest {
           System.out.println(((Subscription)arg0).getUrl());
         }
       });
-	  
-	  
-	  
 	}
-	
-	
-
 }

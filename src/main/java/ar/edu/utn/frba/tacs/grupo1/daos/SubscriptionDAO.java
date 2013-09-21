@@ -41,7 +41,7 @@ public class SubscriptionDAO  extends DAO{
 
 		if (res.next()) {
 			Subscription subscription = new Subscription();
-			subscription.setId(Long.parseLong(res
+			subscription.setId(Integer.parseInt(res
 					.getString("id")));
 			subscription.setUrl(res.getString("url"));
 
@@ -64,7 +64,7 @@ public class SubscriptionDAO  extends DAO{
 
 		while (res.next()) {
 			Subscription subscription = new Subscription();
-			subscription.setId(Long.parseLong(res
+			subscription.setId(Integer.parseInt(res
 					.getString("id")));
 			subscription.setUrl(res.getString("url"));
 			SimpleDateFormat dateValue = new SimpleDateFormat("YYYY-MM-DD");
