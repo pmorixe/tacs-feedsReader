@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.ListableBeanFactory;
 
 import ar.edu.utn.frba.tacs.grupo1.daos.SubscriptionDAO;
-import ar.edu.utn.frba.tacs.grupo1.models.Subscription;
+import ar.edu.utn.frba.tacs.grupo1.domain.Subscription;
 
 public class SubscriptionDAOTest {
 	
@@ -21,14 +21,14 @@ public class SubscriptionDAOTest {
 		subscriptionDAO.save(subscripcion);
 
 		List<Subscription> listarSubcripciones = subscriptionDAO
-				.listarSubcripciones();
+				.listSubcripciones();
 		assert(listarSubcripciones.size() > 0);
 	}
 	
 	@Test
 	public void testListarSubscripciones() throws Exception{
 		SubscriptionDAO subscriptionDAO = new SubscriptionDAO();
-		List<Subscription> subscripciones = subscriptionDAO.listarSubcripciones();
+		List<Subscription> subscripciones = subscriptionDAO.listSubcripciones();
 		CollectionUtils.forAllDo(subscripciones, new Closure() {
 			
 			public void execute(Object arg0) {

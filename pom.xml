@@ -73,14 +73,7 @@
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
-			<version>1.6.2</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time-jsptags</artifactId>
-			<version>1.0.2</version>
-			<scope>runtime</scope>
+			<version>2.0</version>
 		</dependency>		
 
 		<!-- Servlet -->
@@ -115,26 +108,48 @@
  		<artifactId>derbyclient</artifactId>
  		<version>10.8.2.2</version>
 	</dependency>
-    <dependency>
-    	<groupId>commons-collections</groupId>
-      	<artifactId>commons-collections</artifactId>
-      	<version>1.0</version>
-    </dependency>
+      <dependency>
+		<groupId>commons-collections</groupId>
+		<artifactId>commons-collections</artifactId>
+		<version>3.2.1</version>
+      </dependency>
    	<dependency>
 		<groupId>mysql</groupId>
 		<artifactId>mysql-connector-java</artifactId>
 		<version>5.1.6</version>
     </dependency>
+    
+      <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.1.0.Final</version>
+        </dependency>
+
+      
+
+        <!-- Hibernate uses slf4j for logging, for our purposes here use the simple backend -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+
+        <!-- Hibernate gives you a choice of bytecode providers between cglib and javassist -->
+        <dependency>
+            <groupId>javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.12.1.GA</version>
+        </dependency>
   </dependencies>
 	
 	<repositories>
 		<!-- For Hibernate Validator -->
-		<repository>
-			<id>org.jboss.repository.release</id>
-			<name>JBoss Maven Release Repository</name>			
-			<url>https://repository.jboss.org/nexus/content/repositories/releases</url>
-			<snapshots><enabled>false</enabled></snapshots>			
-		</repository>
+<!-- 		<repository> -->
+<!-- 			<id>org.jboss.repository.release</id> -->
+<!-- 			<name>JBoss Maven Release Repository</name>			 -->
+<!-- 			<url>https://repository.jboss.org/nexus/content/repositories/releases</url> -->
+<!-- 			<snapshots><enabled>false</enabled></snapshots>			 -->
+<!-- 		</repository> -->
 	</repositories>
 
 

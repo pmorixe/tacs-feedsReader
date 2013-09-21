@@ -1,6 +1,7 @@
-package ar.edu.utn.frba.tacs.grupo1.models;
+package ar.edu.utn.frba.tacs.grupo1.domain;
 
 import java.text.spi.DateFormatProvider;
+import java.util.Date;
 
 import org.joda.time.DateTime;
 
@@ -10,7 +11,7 @@ public class Subscription {
 
 	private String url;
 	
-	private DateTime since = new DateTime();
+	private Date since = new Date();
 
 	public Subscription() {
 	}
@@ -36,11 +37,11 @@ public class Subscription {
 		this.id = id;
 	}
 
-	public DateTime getSince() {
+	public Date getSince() {
 		return since;
 	}
 
-	public void setSince(DateTime since) {
+	public void setSince(Date since) {
 		this.since = since;
 	}
 

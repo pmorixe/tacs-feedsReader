@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.utn.frba.tacs.grupo1.daos.SubscriptionDAO;
+import ar.edu.utn.frba.tacs.grupo1.domain.Subscription;
 import ar.edu.utn.frba.tacs.grupo1.models.Account;
-import ar.edu.utn.frba.tacs.grupo1.models.Subscription;
 
 @Controller
 @RequestMapping(value="/subscription")
@@ -35,7 +35,7 @@ public class SubscriptionController {
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public String getlistSubscription(Model model) throws Exception {
 		SubscriptionDAO subscriptionDAO = new SubscriptionDAO();
-		model.addAttribute("subscriptions", subscriptionDAO.listarSubcripciones());
+		model.addAttribute("subscriptions", subscriptionDAO.listSubcripciones());
 		return "subscription/list";
 	}
 }

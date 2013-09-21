@@ -19,7 +19,7 @@ public class DbConnectionTest extends TestCase {
 	@Test
 	public void testDesconectarDB() throws Exception {
 		DbConnection dbConnection = new DbConnection();
-		dbConnection.desconectar();
+		dbConnection.disconnect();
 		Connection connection = dbConnection.getConnection();
 		assertNull(connection);
 	}

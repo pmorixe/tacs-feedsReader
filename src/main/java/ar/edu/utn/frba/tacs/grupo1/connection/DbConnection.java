@@ -29,7 +29,9 @@ public class DbConnection {
 		return connection;
 	}
 
-	public void desconectar() {
+	public void disconnect() throws SQLException {
+		if (!connection.isClosed())
+			connection.close();
 		connection = null;
 	}
 }
