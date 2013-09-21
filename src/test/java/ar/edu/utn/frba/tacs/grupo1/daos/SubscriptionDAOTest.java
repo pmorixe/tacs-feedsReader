@@ -15,8 +15,7 @@ public class SubscriptionDAOTest {
 	
 	@Test
 	public void testRegistrarSubscripcion() throws Exception {
-		Subscription subscripcion = new Subscription(new Long(1),
-				"www.algo.com");
+		Subscription subscripcion = new Subscription(null, "www.algo.com");
 		SubscriptionDAO subscriptionDAO = new SubscriptionDAO();
 		subscriptionDAO.save(subscripcion);
 

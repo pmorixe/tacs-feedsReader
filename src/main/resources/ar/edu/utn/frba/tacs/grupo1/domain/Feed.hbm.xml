@@ -5,18 +5,14 @@
 
 <hibernate-mapping package="ar.edu.utn.frba.tacs.grupo1.domain">
 
-    <class name="Subscription" table="SUBSCRIPTION">
+    <class name="Feed" table="Feed">
         <id name="id" column="ID">
             <generator class="native"/>
         </id>
         
-        <property name="url"/>
+        <property name="link"/>
+        <property name="description"/>
+        <property name="title"/>
         
-        <property name="since" type="timestamp" column="SINCE"/>
-        
-        <set name="feeds" table="Feed" cascade="all">
-			<key column="idSubscription" />
-			<many-to-many column="PHONE_ID" unique="true" class="com.vaannila.student.Phone" />
-		</set>
-    </class>
+   </class>
 </hibernate-mapping>

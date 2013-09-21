@@ -45,7 +45,6 @@ public class SubscriptionDAO  extends DAO{
 					.getString("id")));
 			subscription.setUrl(res.getString("url"));
 
-			subscription.setSince(new DateTime(res.getString("since")).toDate());
 			subscriptions.add(subscription);
 		}
 		res.close();
@@ -72,7 +71,6 @@ public class SubscriptionDAO  extends DAO{
 			Date fecha = dateValue.parse(res.getString("since"));
 			DateTime since = new DateTime(fecha);
 
-			subscription.setSince(since.toDate());
 			subscriptions.add(subscription);
 		}
 		res.close();
