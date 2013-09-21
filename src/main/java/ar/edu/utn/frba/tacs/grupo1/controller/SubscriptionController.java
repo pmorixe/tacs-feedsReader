@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.utn.frba.tacs.grupo1.daos.DAO;
 import ar.edu.utn.frba.tacs.grupo1.daos.SubscriptionDAO;
 import ar.edu.utn.frba.tacs.grupo1.domain.Subscription;
 import ar.edu.utn.frba.tacs.grupo1.models.Account;
@@ -28,7 +29,7 @@ public class SubscriptionController {
 		if (result.hasErrors()) {
 			return "subscription/add";
 		}
-		SubscriptionDAO subscriptionDAO = new SubscriptionDAO();
+		DAO subscriptionDAO = new SubscriptionDAO();
 		subscriptionDAO.save(subscription);
 		return "redirect:/";
 	}
