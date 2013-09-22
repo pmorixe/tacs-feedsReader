@@ -1,42 +1,61 @@
 package ar.edu.utn.frba.tacs.grupo1.daos;
 
-import org.junit.Test;
-
-import ar.edu.utn.frba.tacs.grupo1.daos.DAO;
 import ar.edu.utn.frba.tacs.grupo1.domain.Feed;
 import ar.edu.utn.frba.tacs.grupo1.domain.Subscription;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertNotNull;
 
 public class SubscriptionDAOTest {
-	
-	
-	public void testSaveSubscription() throws Exception {
-		Subscription subscription = new Subscription("www.algo.com");
-		Feed feed = new Feed();
-		feed.setDescription("descripcion del feed");
-		feed.setLink("link del feed");
-		feed.setTitle("title del feed");
-		subscription.addToFeeds(feed);
-		int idCreated = DAO.save(subscription);
-		assert(idCreated != 0);
+
+	private Subscription subscription;
+	private Feed feed;
+
+	@Before
+	public void setUpSubscription() {
+		this.subscription = new Subscription("www.foo.com");
+		this.feed = new Feed("feed title", "feed link", "feed description");
 	}
+
 	@Test
-	public void testGetSubscriptionsList() throws Exception {
-		DAO.list(Subscription.class);
+	public void testSaveSubscription() {
+		this.subscription.addFeed(this.feed);
+		int createdId = DAO.save(this.subscription);
+		assert (createdId != 0);
 	}
+
 	@Test
-	public void testGetSubscriptionsById() throws Exception {
-		Subscription subscription = new Subscription("www.algo.com");
-		Feed feed = new Feed();
-		feed.setDescription("descripcion del feed");
-		feed.setLink("linkdel feed");
-		feed.setTitle("title del feed");
-		subscription.addToFeeds(feed);
-		int idTest = DAO.save(subscription);
-		assert(idTest != 0);
-		subscription = null;
-		subscription = (Subscription) DAO.getById(Subscription.class, idTest);
-		assert(subscription != null);
-		assert(subscription.getId() == idTest);
+	public void testGetSubscriptionsById() {
+		int createdId = DAO.save(this.subscription);
+		subscription = (Subscription) DAO.getById(Subscription.class, createdId);
+		assertNotNull(subscription);
+		assert (subscription.getId() == createdId);
 	}
-	
+
+	@Test
+	public void testGetSubscriptionsList() {
+		DAO.save(this.subscription);
+		assertFalse(DAO.list(Subscription.class).isEmpty());
+	}
+
+	/* Me rindo, tengo que estudiar bien como es el tema de hibernate -hpieroni
+	@Test
+	public void testGetFeedsFromSubscription() throws Exception {
+		this.subscription.addFeed(this.feed);
+		int createdId = DAO.save(this.subscription);
+		//DAO.save(this.feed);
+		Subscription persistedSubscription = (Subscription) DAO.getById(Subscription.class, createdId);
+		assertFalse(persistedSubscription.getFeeds().isEmpty());
+		assertTrue(persistedSubscription.getFeeds().contains(this.feed));
+	}
+    */
+
+	@After
+	public void tearDownSubscription() {
+		DAO.delete(this.subscription);
+	}
+
 }
