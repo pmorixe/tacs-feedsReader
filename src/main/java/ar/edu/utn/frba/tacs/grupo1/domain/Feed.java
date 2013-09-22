@@ -13,6 +13,7 @@ public class Feed implements Domain{
 	private String description;
 	private Subscription subscription;
 	private int idSubscription;
+	
 	public int getId() {
 		return id;
 	}

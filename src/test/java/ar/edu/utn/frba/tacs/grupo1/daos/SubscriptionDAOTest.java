@@ -8,12 +8,12 @@ import ar.edu.utn.frba.tacs.grupo1.domain.Subscription;
 
 public class SubscriptionDAOTest {
 	
-	@Test
+	
 	public void testSaveSubscription() throws Exception {
 		Subscription subscription = new Subscription("www.algo.com");
 		Feed feed = new Feed();
 		feed.setDescription("descripcion del feed");
-		feed.setLink("linkdel feed");
+		feed.setLink("link del feed");
 		feed.setTitle("title del feed");
 		subscription.addToFeeds(feed);
 		int idCreated = DAO.save(subscription);
