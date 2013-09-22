@@ -9,9 +9,9 @@
 
         <!-- Database connection settings -->
         <property name="jdbc.database">javax.sql.DataSource</property>
-        <property name="connection.url">jdbc:mysql://ec2-23-21-211-172.compute-1.amazonaws.com:3306/feedsreader_development</property>
-        <property name="connection.username">tacs2</property>
-        <property name="connection.password">tacs2</property>
+        <property name="connection.url">jdbc:mysql://ec2-23-21-211-172.compute-1.amazonaws.com:3306/feedsreader</property>
+        <property name="connection.username">tacs2c2013</property>
+        <property name="connection.password">tacs2c2013</property>
 
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">1</property>
@@ -33,6 +33,7 @@
 
         <mapping resource="ar/edu/utn/frba/tacs/grupo1/domain/Subscription.hbm.xml"/>
         <mapping resource="ar/edu/utn/frba/tacs/grupo1/domain/Feed.hbm.xml"/>
+    
     </session-factory>
 
 </hibernate-configuration>
