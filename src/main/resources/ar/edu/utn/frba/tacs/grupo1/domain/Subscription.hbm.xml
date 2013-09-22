@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ar.edu.utn.frba.tacs.grupo1.domain">
+
+    <class name="Subscription" table="SUBSCRIPTION">
+        <id name="id" column="ID">
+            <generator class="native"/>
+        </id>
+        
+        <property name="url"/>
+        
+        <property name="since" type="timestamp" column="SINCE"/>
+        <set name="feeds" table="feed" 
+				inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idSubscription" not-null="true" />
+            </key>
+            <one-to-many class="ar.edu.utn.frba.tacs.grupo1.domain.Feed" />
+        </set> 
+    </class>
+</hibernate-mapping>

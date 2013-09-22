@@ -20,7 +20,7 @@
 	<div class="span-12 last">	
 		<form:form modelAttribute="subscription" action="add" method="post">
 		  	<fieldset>
-			<legend>These are the feeds you are currently subscribed to:</legend>
+			<legend>These are the channels you are currently subscribed to:</legend>
 				<table>
 				<tr>
 					<td>

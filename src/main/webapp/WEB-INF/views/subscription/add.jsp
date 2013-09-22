@@ -20,7 +20,7 @@
 	<div class="span-12 last">	
 		<form:form modelAttribute="subscription" action="add" method="post">
 		  	<fieldset>
-			<legend>Subscribe me to this feed!</legend>
+			<legend>Subscribe me to this channel!</legend>
 				<p>
 					<form:label	for="url" path="url" cssErrorClass="error">URL: </form:label>
 					<form:input path="url"/><br/>
