@@ -9,11 +9,7 @@
 <head>
 	<META http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>TACS FeedsReader</title>
-	<link rel="stylesheet" href="<c:url value="/resources/blueprint/screen.css" />" type="text/css" media="screen, projection">
-	<link rel="stylesheet" href="<c:url value="/resources/blueprint/print.css" />" type="text/css" media="print">
-	<!--[if lt IE 8]>
-		<link rel="stylesheet" href="<c:url value="/resources/blueprint/ie.css" />" type="text/css" media="screen, projection">
-	<![endif]-->
+		<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.css" />" >
 </head>	
 <body>
 <div class="container">
@@ -26,13 +22,13 @@
 					<form:input path="url"/><br/>
 				</p>
 				<p>
-					<input type="submit" value="Save"/>
+  					<button class="btn btn-primary" type="submit" value="Save">Save</button>
 				</p>
 			</fieldset>
 		</form:form>
 	</div>
 	<hr>	
 </div>
-<a href="/" >Back to home</a>
+<a href="/" class="btn btn-inverse" >Back to home</a>
 </body>
 </html>

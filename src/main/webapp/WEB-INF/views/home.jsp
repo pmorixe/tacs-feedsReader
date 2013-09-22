@@ -7,11 +7,8 @@
 <head>
 	<META http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title><fmt:message key="welcome.title"/></title>
-	<link rel="stylesheet" href="<c:url value="/resources/blueprint/screen.css" />" type="text/css" media="screen, projection">
-	<link rel="stylesheet" href="<c:url value="/resources/blueprint/print.css" />" type="text/css" media="print">
-	<!--[if lt IE 8]>
-		<link rel="stylesheet" href="<c:url value="/resources/blueprint/ie.css" />" type="text/css" media="screen, projection">
-	<![endif]-->
+	<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.css" />" >
+<!-- 	<style type="text/css"> body { background-color: ;  }   </style> -->
 </head>
 <body>
 <div class="container">  

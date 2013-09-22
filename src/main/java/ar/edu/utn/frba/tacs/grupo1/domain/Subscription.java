@@ -1,28 +1,30 @@
 package ar.edu.utn.frba.tacs.grupo1.domain;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 public class Subscription implements Domain {
-  
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
 	private String url;
-	
-	private Date since = new Date();
-
-	public Subscription() {
-	}
+	private Date since;
+	private Set<Feed> feeds;
 
 	public Subscription(String url) {
+		this();
 		this.url = url;
+	}
+
+	public Subscription() {
+		this.since = new Date();
+		this.feeds = new HashSet<Feed>(0);
 	}
 
 	public String getUrl() {
@@ -48,6 +50,7 @@ public class Subscription implements Domain {
 	public void setSince(Date since) {
 		this.since = since;
 	}
+
 	public Set<Feed> getFeeds() {
 		return feeds;
 	}
@@ -55,10 +58,9 @@ public class Subscription implements Domain {
 	public void setFeeds(Set<Feed> feeds) {
 		this.feeds = feeds;
 	}
-	public void addToFeeds(Feed feed) {
-		feed.setSubscription(this);
+
+	public void addFeed(Feed feed) {
 		this.feeds.add(feed);
 	}
-	private Set<Feed> feeds = new HashSet<Feed>(0);
 
 }

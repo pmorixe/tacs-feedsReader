@@ -9,11 +9,7 @@
 <head>
 	<META http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>TACS FeedsReader</title>
-	<link rel="stylesheet" href="<c:url value="/resources/blueprint/screen.css" />" type="text/css" media="screen, projection">
-	<link rel="stylesheet" href="<c:url value="/resources/blueprint/print.css" />" type="text/css" media="print">
-	<!--[if lt IE 8]>
-		<link rel="stylesheet" href="<c:url value="/resources/blueprint/ie.css" />" type="text/css" media="screen, projection">
-	<![endif]-->
+		<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.css" />" >
 </head>	
 <body>
 <div class="container">
@@ -21,8 +17,8 @@
 		<form:form modelAttribute="subscription" action="add" method="post">
 		  	<fieldset>
 			<legend>These are the channels you are currently subscribed to:</legend>
-				<table>
-				<tr>
+				<table class="table table-condensed">
+				<tr class="success"> 
 					<td>
 						#
 					</td>
@@ -34,7 +30,7 @@
 					</td>
 				</tr>
 					     <c:forEach items="${subscriptions}" var="subscription">
-					     <tr>
+					     <tr class="info">
 					       <td>${subscription.id}</td>
 					       <td>${subscription.url}</td>
 					       <td>${subscription.since}</td>
@@ -46,6 +42,6 @@
 	</div>
 	<hr>	
 </div>
-<a href="/" >Back to home</a>
+<a href="/" class="btn btn-inverse" >Back to home</a>
 </body>
 </html>
