@@ -22,13 +22,13 @@
 					<form:input path="url"/><br/>
 				</p>
 				<p>
-					<input type="submit" value="Save"/>
+  					<button class="btn btn-primary" type="submit" value="Save">Save</button>
 				</p>
 			</fieldset>
 		</form:form>
 	</div>
 	<hr>	
 </div>
-<a href="/" >Back to home</a>
+<a href="/" class="btn btn-inverse" >Back to home</a>
 </body>
 </html>

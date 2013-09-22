@@ -17,8 +17,8 @@
 		<form:form modelAttribute="subscription" action="add" method="post">
 		  	<fieldset>
 			<legend>These are the channels you are currently subscribed to:</legend>
-				<table>
-				<tr>
+				<table class="table table-condensed">
+				<tr class="success"> 
 					<td>
 						#
 					</td>
@@ -30,7 +30,7 @@
 					</td>
 				</tr>
 					     <c:forEach items="${subscriptions}" var="subscription">
-					     <tr>
+					     <tr class="info">
 					       <td>${subscription.id}</td>
 					       <td>${subscription.url}</td>
 					       <td>${subscription.since}</td>
@@ -42,6 +42,6 @@
 	</div>
 	<hr>	
 </div>
-<a href="/" >Back to home</a>
+<a href="/" class="btn btn-inverse" >Back to home</a>
 </body>
 </html>
