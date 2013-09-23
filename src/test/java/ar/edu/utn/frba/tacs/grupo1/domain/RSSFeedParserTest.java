@@ -1,3 +1,4 @@
+package ar.edu.utn.frba.tacs.grupo1.domain;
 import static org.junit.Assert.*;
 
 import org.junit.Test;

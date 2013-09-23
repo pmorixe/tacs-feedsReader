@@ -62,5 +62,4 @@ public class Subscription implements Domain {
 	public void addFeed(Feed feed) {
 		this.feeds.add(feed);
 	}
-
 }

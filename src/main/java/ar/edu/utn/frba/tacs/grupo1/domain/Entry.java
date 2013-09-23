@@ -1,6 +1,6 @@
 package ar.edu.utn.frba.tacs.grupo1.domain;
 
-//Representa un Mensaje de Feed
+//Representa un Mensaje de Feed, un articulo o lo que sea
 public class Entry {
 
   String title;

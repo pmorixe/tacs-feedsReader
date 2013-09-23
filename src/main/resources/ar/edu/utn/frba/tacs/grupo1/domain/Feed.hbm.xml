@@ -10,10 +10,13 @@
             <generator class="native"/>
         </id>
         
-        <property name="link"/>
-        <property name="description"/>
-        <property name="title"/>
-        <property name="idSubscription"/>
+        <property name="url"/>
+        <property name="copyright"/>
+        <property name="language"/>
+        <property name="pubDate"/>
+        <property name="summary"/>
+        <property name="createdDate"/>
+        
         <!-- <many-to-one name="subscription" class="ar.edu.utn.frba.tacs.grupo1.domain.Subscription"
         	fetch="select">
             <column name="idSubscription" not-null="true" />
