@@ -1,67 +1,97 @@
 package ar.edu.utn.frba.tacs.grupo1.domain;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-public class Feed implements Domain {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	private String title;
-	private String link;
-	private String description;
+import ar.edu.utn.frba.tacs.grupo1.domain.Entry;
 
-	private int idSubscription;
+/**
+*
+* La idea es representar una URL, hacia un RSS. Formato http://..../algo.rss
+*
+*/
+public class Feed {
 
-	public Feed(String title, String link, String description) {
-		this.title = title;
-		this.link = link;
-		this.description = description;
-	}
-
-	public Feed() {
-
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getLink() {
-		return link;
-	}
-
-	public void setLink(String link) {
-		this.link = link;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public int getIdSubscription() {
-		return idSubscription;
-	}
-
-	public void setIdSubscription(int idSubscription) {
-		this.idSubscription = idSubscription;
-	}
-
+  String title; // Titulo del Feed
+  String url; // URL propiamente dicha
+  String copyright; // Derechos
+  String language; // Lenguaje del Feed
+  String pubDate; // Fecha de Publicación
+  String summary; // Descripción
+  Date createdDate; // Fecha de actualización
+  
+  final List<Entry> entries = new ArrayList<Entry>(); // Lista de
+  // actualizaciones
+  
+  public Feed(String title, String url, String summary, String language,
+      String copyright, String pubDate) {
+    this.title = title;
+    this.url = url;
+    this.summary = summary;
+    this.language = language;
+    this.copyright = copyright;
+    this.pubDate = pubDate;
+  }
+  
+  public String getTitle() {
+    return title;
+    }
+  
+  public void setTitle(String title) {
+    this.title = title;
+  }
+  
+  public String getUrl() {
+    return url;
+  }
+  
+  public void setUrl(String url) {
+    this.url = url;
+  }
+  
+  public String getSummary() {
+    return summary;
+  }
+    
+  public void setSummary(String summary) {
+    this.summary = summary;
+  }
+  
+  public Date getCreatedDate() {
+    return createdDate;
+  }
+  
+  public void setCreatedDate(Date createdDate) {
+    this.createdDate = createdDate;
+  }
+  
+  public String getCopyright() {
+    return copyright;
+  }
+  
+  public void setCopyright(String copyright) {
+    this.copyright = copyright;
+  }
+  
+  public String getLanguage() {
+    return language;
+  }
+  
+  public void setLanguage(String language) {
+    this.language = language;
+  }
+  
+  public String getPubDate() {
+    return pubDate;
+  }
+  
+  public void setPubDate(String pubDate) {
+    this.pubDate = pubDate;
+  }
+  
+  public List<Entry> getEntries() {
+    return entries;
+  }
+  
 }

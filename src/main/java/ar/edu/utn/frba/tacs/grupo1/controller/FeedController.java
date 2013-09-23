@@ -9,10 +9,9 @@ import ar.edu.utn.frba.tacs.grupo1.domain.Feed;
 @Controller
 public class FeedController {
 
-	@RequestMapping("/feeds")
+/*	@RequestMapping("/feeds")
 	public ModelAndView showFeeds() {
 		return new ModelAndView("feed", "command", new Feed());
-
 	}
-
+*/
 }

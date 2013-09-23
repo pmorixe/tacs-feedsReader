@@ -2,6 +2,7 @@ package ar.edu.utn.frba.tacs.grupo1.daos;
 
 import ar.edu.utn.frba.tacs.grupo1.domain.Feed;
 import ar.edu.utn.frba.tacs.grupo1.domain.Subscription;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +18,8 @@ public class SubscriptionDAOTest {
 	@Before
 	public void setUpSubscription() {
 		this.subscription = new Subscription("www.foo.com");
-		this.feed = new Feed("feed title", "feed link", "feed description");
+		this.feed = new Feed("feed title", "feed link", "feed summary",
+		    "spanish","cprght","a pubdate");
 	}
 
 	@Test
