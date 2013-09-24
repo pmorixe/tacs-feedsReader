@@ -14,12 +14,12 @@
 <body>
 <div class="container">
 	<div class="span-12 last">	
-		<form:form modelAttribute="subscription" action="add" method="post">
+		<form:form modelAttribute="subscription" action="add" method="post" class="form-search">
 		  	<fieldset>
 			<legend>Subscribe me to this channel!</legend>
 				<p>
-					<form:label	for="url" path="url" cssErrorClass="error">URL: </form:label>
-					<form:input path="url"/><br/>
+					<form:label	for="url" path="url" cssErrorClass="error" >URL: </form:label>
+					<form:input path="url"class="input-medium search-query" /><br/>
 				</p>
 				<p>
   					<button class="btn btn-primary" type="submit" value="Save">Save</button>
