@@ -58,6 +58,10 @@ public class Subscription implements Domain {
     return feeds;
   }
 
+  public void setFeeds(List<Feed> feeds) {
+    this.feeds = feeds;
+  }
+
   public List<Entry> update() {
     RSSFeedParser parser = new RSSFeedParser(this.url);
     Feed feed = parser.readFeed();

@@ -3,6 +3,10 @@ package ar.edu.utn.frba.tacs.grupo1.daos;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertNotNull;
 
+import java.util.List;
+
+import org.apache.commons.collections.Closure;
+import org.apache.commons.collections.CollectionUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,11 +25,12 @@ public class SubscriptionDAOTest {
 
   @Before
   public void setUpSubscription() {
-    this.subscription = new Subscription("www.SuperFoo.com");
+    this.subscription = new Subscription("www.SuperFooFoo.com");
     this.entry = new Entry("Entry title", "Descripcion", "Entry Link", "Juan Carlos", "Sarlanga");
     this.feed = new Feed("feed title", "feed link", "feed summary", "spanish", "cprght", "a pubdate");
   }
 
+  @Test
   public void testSaveSubscription() {
     feed.getEntries().add(entry);
     subscription.getFeeds().add(feed);
@@ -43,8 +48,22 @@ public class SubscriptionDAOTest {
 
   @Test
   public void testGetSubscriptionsList() {
+    feed.getEntries().add(entry);
+    subscription.getFeeds().add(feed);
+    subscription.getFeeds().add(feed);
+    subscription.getFeeds().add(feed);
     DAO.save(this.subscription);
-    assertFalse(DAO.list(Subscription.class).isEmpty());
+    List<Subscription> list = (List<Subscription>) DAO.list(Subscription.class);
+    CollectionUtils.forAllDo(list, new Closure() {
+
+      @Override
+      public void execute(Object arg0) {
+        Subscription subs = (Subscription) arg0;
+        System.out.println("\n" + subs.getFeeds().size() + ":" + subs.getUrl() + "\n");
+
+      }
+    });
+    assertFalse(list.isEmpty());
   }
 
   /*

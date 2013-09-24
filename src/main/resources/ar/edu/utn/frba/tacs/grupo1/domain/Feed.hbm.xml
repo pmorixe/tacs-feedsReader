@@ -28,12 +28,12 @@
 <!--             <column name="idSubscription" not-null="true" /> -->
 <!--         </many-to-one> -->
         
-<!--         <bag name="entries" > -->
-<!--             <key> -->
-<!--                 <column name="IDFEED"  /> -->
-<!--             </key> -->
-<!--             <one-to-many class="ar.edu.utn.frba.tacs.grupo1.domain.Entry" /> -->
-<!--         </bag> -->
+        <bag name="entries" lazy="false" cascade="save-update, delete-orphan">
+            <key>
+                <column name="IDFEED"  />
+            </key>
+            <one-to-many class="ar.edu.utn.frba.tacs.grupo1.domain.Entry" />
+        </bag>
          
    </class>
 </hibernate-mapping>
