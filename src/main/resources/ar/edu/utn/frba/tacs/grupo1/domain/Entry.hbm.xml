@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ar.edu.utn.frba.tacs.grupo1.domain">
+
+    <class name="Entry" table="ENTRY">
+        <id name="id" column="ID">
+            <generator class="native"/>
+        </id>
+        
+        <property name="title" type="java.lang.String" />
+        
+        <property name="description" type="java.lang.String" />
+        
+        <property name="link" type="java.lang.String"/>
+        
+        <property name="author" type="java.lang.String"/>
+        
+        <property name="guid" type="java.lang.String"/>
+        
+<!--         <many-to-one name="feed" class="ar.edu.utn.frba.tacs.grupo1.domain.Feed"> -->
+<!--             <column name="IDFEED" not-null="true" /> -->
+<!--         </many-to-one> -->
+         
+   </class>
+</hibernate-mapping>

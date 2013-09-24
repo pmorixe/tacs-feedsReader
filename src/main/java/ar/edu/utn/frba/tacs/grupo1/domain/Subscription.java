@@ -1,76 +1,68 @@
 package ar.edu.utn.frba.tacs.grupo1.domain;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import ar.edu.utn.frba.tacs.grupo1.daos.DAO;
-
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 public class Subscription implements Domain {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private int id;
 
-	private String url;
-	private Date since;
-	private Set<Feed> feeds;
+  private String url;
 
-	public Subscription(String url) {
-		this();
-		this.url = url;
-	}
+  private Date since = new Date();;
 
-	public Subscription() {
-		this.since = new Date();
-		this.feeds = new HashSet<Feed>(0);
-	}
+  private List<Feed> feeds = new ArrayList<Feed>();
 
-	public String getUrl() {
-		return url;
-	}
+  public Subscription(String url) {
+    this.url = url;
+  }
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
+  public Subscription() {
+  }
 
-	public int getId() {
-		return id;
-	}
+  public String getUrl() {
+    return url;
+  }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+  public void setUrl(String url) {
+    this.url = url;
+  }
 
-	public Date getSince() {
-		return since;
-	}
+  public int getId() {
+    return id;
+  }
 
-	public void setSince(Date since) {
-		this.since = since;
-	}
+  public void setId(int id) {
+    this.id = id;
+  }
 
-	public Set<Feed> getFeeds() {
-		return feeds;
-	}
+  public Date getSince() {
+    return since;
+  }
 
-	public void setFeeds(Set<Feed> feeds) {
-		this.feeds = feeds;
-	}
+  public void setSince(Date since) {
+    this.since = since;
+  }
 
-	public void addFeed(Feed feed) {
-		this.feeds.add(feed);
-	}
+  public List<Feed> getFeeds() {
+    return feeds;
+  }
 
-	public List<Entry> update() {
-      RSSFeedParser parser = new RSSFeedParser(this.url);
-      Feed feed = parser.readFeed();      
-      //TODO DAO.save(feed);
-      return feed.getEntries();
-    }
+  public void setFeeds(List<Feed> feeds) {
+    this.feeds = feeds;
+  }
+
+  public List<Entry> update() {
+    RSSFeedParser parser = new RSSFeedParser(this.url);
+    Feed feed = parser.readFeed();
+    // TODO DAO.save(feed);
+    return feed.getEntries();
+  }
 }

@@ -33,6 +33,7 @@
 
         <mapping resource="ar/edu/utn/frba/tacs/grupo1/domain/Subscription.hbm.xml"/>
         <mapping resource="ar/edu/utn/frba/tacs/grupo1/domain/Feed.hbm.xml"/>
+        <mapping resource="ar/edu/utn/frba/tacs/grupo1/domain/Entry.hbm.xml"/>
     
     </session-factory>
 
