@@ -39,12 +39,12 @@ public class SubscriptionController {
 	@RequestMapping(value="/updates",method=RequestMethod.GET)
     public String getupdatesSubscription(Model model) throws Exception {
 	    @SuppressWarnings("unchecked")
-      List<Subscription> subscriptions = (List<Subscription>) DAO.list(Subscription.class);
+        List<Subscription> subscriptions = (List<Subscription>) DAO.list(Subscription.class);
 	    List<Entry> entries = new ArrayList<Entry>();
 	    for (Subscription subscription : subscriptions) {
 	      entries.addAll(subscription.update());
         }
-        model.addAttribute("subscriptions", entries);
+        model.addAttribute("entries", entries);
         return "subscription/updates";
     }
 }
