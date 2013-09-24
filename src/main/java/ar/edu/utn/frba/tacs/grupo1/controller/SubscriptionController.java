@@ -1,12 +1,18 @@
 package ar.edu.utn.frba.tacs.grupo1.controller;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import ar.edu.utn.frba.tacs.grupo1.daos.DAO;
 import ar.edu.utn.frba.tacs.grupo1.domain.Subscription;
+import ar.edu.utn.frba.tacs.grupo1.domain.Entry;
 
 @Controller
 @RequestMapping(value="/subscription")
@@ -30,4 +36,15 @@ public class SubscriptionController {
 		model.addAttribute("subscriptions", DAO.list(Subscription.class));
 		return "subscription/list";
 	}
+	@RequestMapping(value="/updates",method=RequestMethod.GET)
+    public String getupdatesSubscription(Model model) throws Exception {
+	    @SuppressWarnings("unchecked")
+        List<Subscription> subscriptions = (List<Subscription>) DAO.list(Subscription.class);
+	    List<Entry> entries = new ArrayList<Entry>();
+	    for (Subscription subscription : subscriptions) {
+	      entries.addAll(subscription.update());
+        }
+        model.addAttribute("entries", entries);
+        return "subscription/updates";
+    }
 }

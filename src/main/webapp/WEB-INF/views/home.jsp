@@ -13,7 +13,7 @@
 <body>
 <div class="container">  
 	<h1>
-		TACS Feeds Reader (90's style)
+		TACS Feeds Reader 
 	</h1>
 	<p>
 		<ul>
@@ -23,6 +23,11 @@
 	<p>
 		<ul>
 			<li><a href="subscription/list">Show me the channels I'm subscribed to</a></li>
+		</ul>
+	</p>
+	<p>
+		<ul>
+			<li><a href="subscription/updates">Show me the news</a></li>
 		</ul>
 	</p>
 	<hr>	

@@ -138,21 +138,20 @@
             <artifactId>javassist</artifactId>
             <version>3.12.1.GA</version>
         </dependency>
-        <dependency>
-	      <groupId>informa</groupId>
-	      <artifactId>informa</artifactId>
-	      <version>0.6.0</version>
-	    </dependency>
+         <dependency>
+        <groupId>rome</groupId>
+        <artifactId>rome</artifactId>
+        <version>0.3</version>
+      </dependency>
   </dependencies>
 
 	<repositories>
 		<!-- For Hibernate Validator -->
-<!-- 		<repository> -->
-<!-- 			<id>org.jboss.repository.release</id> -->
-<!-- 			<name>JBoss Maven Release Repository</name>			 -->
-<!-- 			<url>https://repository.jboss.org/nexus/content/repositories/releases</url> -->
-<!-- 			<snapshots><enabled>false</enabled></snapshots>			 -->
-<!-- 		</repository> -->
+      <repository>
+        <id>java.net2</id>
+        <name>Java.net</name>
+        <url>https://oss.sonatype.org/content/repositories/java.net2</url>
+      </repository>
 	</repositories>
 
 

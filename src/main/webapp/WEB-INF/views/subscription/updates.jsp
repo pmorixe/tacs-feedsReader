@@ -14,19 +14,20 @@
 <body>
 <div class="container">
 	<div class="span-12 last">	
-		<form:form modelAttribute="subscription" action="add" method="post" class="form-search">
+		<form:form modelAttribute="subscription" action="add" method="post">
 		  	<fieldset>
-			<legend>Subscribe me to this channel!</legend>
-				<p>
-					<form:label	for="url" path="url" cssErrorClass="error" >URL: </form:label>
-					<form:input path="url" class="input-xxlarge" placeholder="Paste the URL here!" />
-					<br/>
-				</p>
-				<p>
-  					<button class="btn btn-primary" type="submit" value="Save">Save</button>
-				</p>
-			</fieldset>
+			<legend>These are the news!</legend>
 			<a href="/" class="btn btn-inverse" >Back to home</a>
+			     <c:forEach items="${entries}" var="entry">
+			       <p>
+				       <a href="${entry.link}">
+				       <h1>${entry.title}</h1> 
+				       </a>
+				       <h3>${entry.description}</h3>
+				   </p>
+			    </c:forEach>
+			</fieldset>
+		<a href="/" class="btn btn-inverse" >Back to home</a>
 		</form:form>
 	</div>
 	<hr>	
