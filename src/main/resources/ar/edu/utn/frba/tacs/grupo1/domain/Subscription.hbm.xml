@@ -14,11 +14,11 @@
         
         <property name="since" type="timestamp" column="SINCE"/>
         
-        <bag name="feeds" >
-            <key>
-                <column name="idSubscription"  />
-            </key>
-            <one-to-many class="ar.edu.utn.frba.tacs.grupo1.domain.Feed"/>
-        </bag> 
+<!--         <bag name="feeds" > -->
+<!--             <key> -->
+<!--                 <column name="idSubscription"  /> -->
+<!--             </key> -->
+<!--             <one-to-many class="ar.edu.utn.frba.tacs.grupo1.domain.Feed"/> -->
+<!--         </bag>  -->
     </class>
 </hibernate-mapping>
