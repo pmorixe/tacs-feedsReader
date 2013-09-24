@@ -3,8 +3,12 @@ package ar.edu.utn.frba.tacs.grupo1.domain;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import ar.edu.utn.frba.tacs.grupo1.daos.DAO;
+
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Subscription implements Domain {
@@ -62,4 +66,11 @@ public class Subscription implements Domain {
 	public void addFeed(Feed feed) {
 		this.feeds.add(feed);
 	}
+
+	public List<Entry> update() {
+      RSSFeedParser parser = new RSSFeedParser(this.url);
+      Feed feed = parser.readFeed();      
+      DAO.save(feed);
+      return feed.getEntries();
+    }
 }

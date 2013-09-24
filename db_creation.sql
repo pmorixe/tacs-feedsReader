@@ -25,3 +25,19 @@ CREATE TABLE feed (
   CONSTRAINT fk_feed_subscription FOREIGN KEY (idSubscription) REFERENCES subscription (id) ON DELETE NO ACTION ON UPDATE NO ACTION 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 $$
+
+delimiter $$ 
+ 
+CREATE TABLE entry ( 
+  id int(11) NOT NULL AUTO_INCREMENT, 
+  title varchar(200) DEFAULT NULL,
+  description varchar(1000) DEFAULT NULL,
+  link varchar(200) DEFAULT NULL,
+  author varchar(30) DEFAULT NULL,
+  guid varchar(50) DEFAULT NULL,
+    idFeed int,
+  PRIMARY KEY (id), 
+  KEY fk_entry_feed (idFeed), 
+  CONSTRAINT fk_entry_feed FOREIGN KEY (idFeed) REFERENCES feed (id) ON DELETE NO ACTION ON UPDATE NO ACTION 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+$$

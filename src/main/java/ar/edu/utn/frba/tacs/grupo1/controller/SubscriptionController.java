@@ -1,12 +1,17 @@
 package ar.edu.utn.frba.tacs.grupo1.controller;
+import java.util.List;
+
 import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import ar.edu.utn.frba.tacs.grupo1.daos.DAO;
 import ar.edu.utn.frba.tacs.grupo1.domain.Subscription;
+import ar.edu.utn.frba.tacs.grupo1.domain.Entry;
 
 @Controller
 @RequestMapping(value="/subscription")
@@ -30,4 +35,11 @@ public class SubscriptionController {
 		model.addAttribute("subscriptions", DAO.list(Subscription.class));
 		return "subscription/list";
 	}
+	@RequestMapping(value="/updates",method=RequestMethod.GET)
+    public String getupdatesSubscription(Model model) throws Exception {
+	    Subscription subscription = new Subscription();
+	    List<Entry> entries = subscription.update();
+        model.addAttribute("subscriptions", entries);
+        return "subscription/updates";
+    }
 }

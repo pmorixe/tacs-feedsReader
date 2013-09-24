@@ -11,18 +11,18 @@ import ar.edu.utn.frba.tacs.grupo1.domain.Entry;
 * La idea es representar una URL, hacia un RSS. Formato http://..../algo.rss
 *
 */
-public class Feed {
+public class Feed implements Domain {
 
-  String title; // Titulo del Feed
-  String url; // URL propiamente dicha
-  String copyright; // Derechos
-  String language; // Lenguaje del Feed
-  String pubDate; // Fecha de Publicación
-  String summary; // Descripción
-  Date createdDate; // Fecha de actualización
+  private int id;
+  private String title; // Titulo del Feed
+  private String url; // URL propiamente dicha
+  private String copyright; // Derechos
+  private String language; // Lenguaje del Feed
+  private String pubDate; // Fecha de Publicación
+  private String summary; // Descripción
+  private Date createdDate; // Fecha de actualización
   
-  final List<Entry> entries = new ArrayList<Entry>(); // Lista de
-  // actualizaciones
+  final List<Entry> entries = new ArrayList<Entry>(); // Lista de actualizaciones
   
   public Feed(String title, String url, String summary, String language,
       String copyright, String pubDate) {
@@ -92,6 +92,15 @@ public class Feed {
   
   public List<Entry> getEntries() {
     return entries;
+  }
+
+  @Override
+  public int getId() {
+    return this.id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
   
 }
