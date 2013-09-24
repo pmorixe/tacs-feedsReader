@@ -18,7 +18,7 @@ public class Subscription implements Domain {
 
   private String url;
 
-  private Date since = new Date();;
+  private Date since;
 
   private List<Feed> feeds = new ArrayList<Feed>();
 
@@ -27,6 +27,7 @@ public class Subscription implements Domain {
   }
 
   public Subscription() {
+
   }
 
   public String getUrl() {

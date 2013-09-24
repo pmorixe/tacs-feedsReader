@@ -25,6 +25,11 @@
 			<li><a href="subscription/list">Show me the channels I'm subscribed to</a></li>
 		</ul>
 	</p>
+		<p>
+		<ul>
+			<li><a href="subscription/updates">Show my updates</a></li>
+		</ul>
+	</p>
 	<hr>	
 </div>
 </body>

@@ -26,10 +26,9 @@ public class SubscriptionDAOTest {
     this.feed = new Feed("feed title", "feed link", "feed summary", "spanish", "cprght", "a pubdate");
   }
 
-  @Test
   public void testSaveSubscription() {
-    // feed.getEntries().add(entry);
-    // subscription.getFeeds().add(feed);
+    feed.getEntries().add(entry);
+    subscription.getFeeds().add(feed);
     int createdId = DAO.save(this.subscription);
     assert (createdId != 0);
   }
@@ -49,7 +48,6 @@ public class SubscriptionDAOTest {
   }
 
   /*
-   * Me rindo, tengo que estudiar bien como es el tema de hibernate -hpieroni
    * @Test public void testGetFeedsFromSubscription() throws Exception { this.subscription.addFeed(this.feed);
    * int createdId = DAO.save(this.subscription); //DAO.save(this.feed); Subscription persistedSubscription =
    * (Subscription) DAO.getById(Subscription.class, createdId);
