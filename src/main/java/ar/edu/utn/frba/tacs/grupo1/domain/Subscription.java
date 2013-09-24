@@ -3,13 +3,12 @@ package ar.edu.utn.frba.tacs.grupo1.domain;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import ar.edu.utn.frba.tacs.grupo1.daos.DAO;
-
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import ar.edu.utn.frba.tacs.grupo1.daos.DAO;
+import ar.edu.utn.frba.tacs.grupo1.parser.RSSFeedParser;
 
 public class Subscription implements Domain {
 

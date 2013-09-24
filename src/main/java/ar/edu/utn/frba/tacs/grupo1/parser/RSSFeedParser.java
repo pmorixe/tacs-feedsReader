@@ -1,4 +1,4 @@
-package ar.edu.utn.frba.tacs.grupo1.domain;
+package ar.edu.utn.frba.tacs.grupo1.parser;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +10,9 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.Characters;
 import javax.xml.stream.events.XMLEvent;
+
+import ar.edu.utn.frba.tacs.grupo1.domain.Entry;
+import ar.edu.utn.frba.tacs.grupo1.domain.Feed;
 
 public class RSSFeedParser {
 	
