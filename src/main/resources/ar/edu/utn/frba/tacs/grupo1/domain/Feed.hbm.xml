@@ -5,21 +5,35 @@
 
 <hibernate-mapping package="ar.edu.utn.frba.tacs.grupo1.domain">
 
-    <class name="Feed" table="Feed">
+    <class name="Feed" table="FEED">
         <id name="id" column="ID">
             <generator class="native"/>
         </id>
         
-        <property name="url"/>
-        <property name="copyright"/>
-        <property name="language"/>
-        <property name="pubDate"/>
-        <property name="summary"/>
-        <property name="createdDate"/>
+        <property name="title" type="java.lang.String" />
         
-        <!-- <many-to-one name="subscription" class="ar.edu.utn.frba.tacs.grupo1.domain.Subscription"
-        	fetch="select">
-            <column name="idSubscription" not-null="true" />
-        </many-to-one>  -->
+        <property name="url" type="java.lang.String" />
+        
+        <property name="copyright" type="java.lang.String"/>
+        
+        <property name="Language" type="java.lang.String"/>
+        
+        <property name="pubDate" type="java.lang.String"/>
+        
+        <property name="summary" type="java.lang.String"/>
+        
+        <property name="createdDate" type="java.util.Date"/>
+        
+<!--         <many-to-one name="subscription" class="ar.edu.utn.frba.tacs.grupo1.domain.Subscription"> -->
+<!--             <column name="idSubscription" not-null="true" /> -->
+<!--         </many-to-one> -->
+        
+        <bag name="entries" lazy="false" cascade="save-update, delete-orphan">
+            <key>
+                <column name="IDFEED"  />
+            </key>
+            <one-to-many class="ar.edu.utn.frba.tacs.grupo1.domain.Entry" />
+        </bag>
+         
    </class>
 </hibernate-mapping>

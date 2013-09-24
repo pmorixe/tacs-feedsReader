@@ -17,7 +17,7 @@
         <property name="connection.pool_size">1</property>
 
         <!-- SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
 
         <!-- Enable Hibernate's automatic session context management -->
         <property name="current_session_context_class">thread</property>
@@ -33,6 +33,7 @@
 
         <mapping resource="ar/edu/utn/frba/tacs/grupo1/domain/Subscription.hbm.xml"/>
         <mapping resource="ar/edu/utn/frba/tacs/grupo1/domain/Feed.hbm.xml"/>
+        <mapping resource="ar/edu/utn/frba/tacs/grupo1/domain/Entry.hbm.xml"/>
     
     </session-factory>
 

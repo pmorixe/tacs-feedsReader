@@ -25,9 +25,20 @@
 			<li><a href="subscription/list">Show me the channels I'm subscribed to</a></li>
 		</ul>
 	</p>
+<<<<<<< HEAD
 	<p>
 		<ul>
 			<li><a href="subscription/updates">Show me the news</a></li>
+=======
+		<p>
+		<ul>
+			<li><a href="subscription/updates">Show my updates</a></li>
+>>>>>>> branch 'dev' of https://github.com/hernan-pieroni/tacs-feedsReader.git
+		</ul>
+	</p>
+		<p>
+		<ul>
+			<li><a href="subscription/updates">Show my updates</a></li>
 		</ul>
 	</p>
 	<hr>	
