@@ -3,11 +3,11 @@ package ar.edu.utn.frba.tacs.grupo1.domain;
 //Representa un Mensaje de Feed, un articulo o lo que sea
 public class Entry {
 
-  String title;
-  String description;
-  String link;
-  String author;
-  String guid;
+  private String title;
+  private String description;
+  private String link;
+  private String author;
+  private String guid;
 
   public String getTitle() {
     return title;

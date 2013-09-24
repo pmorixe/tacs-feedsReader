@@ -13,7 +13,7 @@
 <body>
 <div class="container">  
 	<h1>
-		TACS Feeds Reader (90's style)
+		TACS Feeds Reader 
 	</h1>
 	<p>
 		<ul>
