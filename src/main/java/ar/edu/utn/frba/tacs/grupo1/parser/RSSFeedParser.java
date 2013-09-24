@@ -1,4 +1,4 @@
-package ar.edu.utn.frba.tacs.grupo1.rss;
+package ar.edu.utn.frba.tacs.grupo1.parser;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +10,9 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.Characters;
 import javax.xml.stream.events.XMLEvent;
+
+import ar.edu.utn.frba.tacs.grupo1.domain.Entry;
+import ar.edu.utn.frba.tacs.grupo1.domain.Feed;
 
 public class RSSFeedParser {
 
@@ -93,7 +96,7 @@ public class RSSFeedParser {
 					}
 				} else if (event.isEndElement()) {
 					if (event.asEndElement().getName().getLocalPart() == ("item")) {
-						FeedMessage message = new FeedMessage();
+						Entry message = new Entry();
 						message.setAuthor(author);
 						message.setDescription(description);
 						message.setGuid(guid);
