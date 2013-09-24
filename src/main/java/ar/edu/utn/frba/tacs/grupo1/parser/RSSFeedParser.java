@@ -1,4 +1,4 @@
-package ar.edu.utn.frba.tacs.grupo1.domain;
+package ar.edu.utn.frba.tacs.grupo1.parser;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +10,9 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.Characters;
 import javax.xml.stream.events.XMLEvent;
+
+import ar.edu.utn.frba.tacs.grupo1.domain.Entry;
+import ar.edu.utn.frba.tacs.grupo1.domain.Feed;
 
 public class RSSFeedParser {
 	
@@ -47,60 +50,60 @@ public class RSSFeedParser {
           	//Obtengo el evento
           	XMLEvent event = eventReader.nextEvent();
           	if (event.isStartElement()) {
-          	String localPart = event.asStartElement().getName().getLocalPart();
+          	  String localPart = event.asStartElement().getName().getLocalPart();
           	
-          	switch (localPart) {
-          	  case "item":
+          	  switch (localPart) {
+          	    case "item":
           	      if (isFeedHeader) {
-          	         isFeedHeader = false;
-          	         feed = new Feed(title, link, description, language, copyright, pubdate);
+          	        isFeedHeader = false;
+          	        feed = new Feed(title, link, description, language, copyright, pubdate);
           	      }
           	      event = eventReader.nextEvent();
           	      break;
-          	  case "title":
-          	    title = getCharacterData(event, eventReader);
-          	    break;
-          	  case "description":
-          	    description = getCharacterData(event, eventReader);
-          	    break;
-          	  case "link":
-          	    link = getCharacterData(event, eventReader);
-          	    break;
-          	  case "guid":
-          	    guid = getCharacterData(event, eventReader);
-          	    break;
-          	  case "language":
-          	    language = getCharacterData(event, eventReader);
-          	    break;
-          	  case "author":
-          	    author = getCharacterData(event, eventReader);
-          	    break;
-          	  case "pubDate":
-          	    pubdate = getCharacterData(event, eventReader);
-          	    break;
-          	  case "copyright":
-          	    copyright = getCharacterData(event, eventReader);
-          	    break;
+          	    case "title":
+          	      title = getCharacterData(event, eventReader);
+          	      break;
+          	    case "description":
+          	      description = getCharacterData(event, eventReader);
+          	      break;
+          	    case "link":
+          	      link = getCharacterData(event, eventReader);
+          	      break;
+          	    case "guid":
+          	      guid = getCharacterData(event, eventReader);
+          	      break;
+          	    case "language":
+          	      language = getCharacterData(event, eventReader);
+          	      break;
+          	    case "author":
+          	      author = getCharacterData(event, eventReader);
+          	      break;
+          	    case "pubDate":
+          	      pubdate = getCharacterData(event, eventReader);
+          	      break;
+          	    case "copyright":
+          	      copyright = getCharacterData(event, eventReader);
+          	      break;
+          	    }
+          	  } else if (event.isEndElement()) {
+          	    if (event.asEndElement().getName().getLocalPart() == ("item")) {
+          	      Entry entry = new Entry();
+          	      entry.setAuthor(author);
+          	      entry.setDescription(description);
+          	      entry.setGuid(guid);
+          	      entry.setLink(link);
+          	      entry.setTitle(title);
+          	      feed.getEntries().add(entry);	
+          	      event = eventReader.nextEvent();
+          	      continue;  
+          	    }
           	  }
-          	} else if (event.isEndElement()) {
-          	  if (event.asEndElement().getName().getLocalPart() == ("item")) {
-          	    Entry entry = new Entry();
-          	    entry.setAuthor(author);
-          	    entry.setDescription(description);
-          	    entry.setGuid(guid);
-          	    entry.setLink(link);
-          	    entry.setTitle(title);
-          	    feed.getEntries().add(entry);	
-          	    event = eventReader.nextEvent();
-          	    continue;  
-          	  }
-          	}
-      	}
+      	  }
 	  } catch (XMLStreamException e) {
 	    throw new RuntimeException(e);
 	  }
 	  return feed;
-	  }
+	}
 	
 	
 	private String getCharacterData(XMLEvent event, XMLEventReader eventReader)

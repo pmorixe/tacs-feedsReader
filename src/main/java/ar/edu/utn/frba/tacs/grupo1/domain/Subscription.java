@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import ar.edu.utn.frba.tacs.grupo1.parser.RSSFeedParser;
+
 public class Subscription implements Domain {
 
   @Id
@@ -55,14 +57,11 @@ public class Subscription implements Domain {
     return feeds;
   }
 
-  public void setFeeds(List<Feed> feeds) {
-    this.feeds = feeds;
-  }
-
   public List<Entry> update() {
     RSSFeedParser parser = new RSSFeedParser(this.url);
     Feed feed = parser.readFeed();
     // TODO DAO.save(feed);
     return feed.getEntries();
   }
+
 }

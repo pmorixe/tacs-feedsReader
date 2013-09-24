@@ -14,21 +14,22 @@
 <body>
 <div class="container">
 	<div class="span-12 last">	
-		<form:form modelAttribute="subscription" action="add" method="post">
+		<form:form modelAttribute="subscription" action="add" method="post" class="form-search">
 		  	<fieldset>
 			<legend>Subscribe me to this channel!</legend>
 				<p>
-					<form:label	for="url" path="url" cssErrorClass="error">URL: </form:label>
-					<form:input path="url"/><br/>
+					<form:label	for="url" path="url" cssErrorClass="error" >URL: </form:label>
+					<form:input path="url" class="input-xxlarge" placeholder="Paste the URL here!" />
+					<br/>
 				</p>
 				<p>
   					<button class="btn btn-primary" type="submit" value="Save">Save</button>
 				</p>
 			</fieldset>
+			<a href="/" class="btn btn-inverse" >Back to home</a>
 		</form:form>
 	</div>
 	<hr>	
 </div>
-<a href="/" class="btn btn-inverse" >Back to home</a>
 </body>
 </html>

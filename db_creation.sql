@@ -2,7 +2,7 @@ delimiter $$
  
 CREATE TABLE subscription ( 
   id int(11) NOT NULL AUTO_INCREMENT, 
-  url varchar(45) DEFAULT NULL, 
+  url varchar(300) DEFAULT NULL, 
   since timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, 
   PRIMARY KEY (id) 
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8

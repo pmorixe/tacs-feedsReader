@@ -17,35 +17,20 @@
 		<form:form modelAttribute="subscription" action="add" method="post">
 		  	<fieldset>
 			<legend>These are the news!</legend>
-				<table class="table table-condensed">
-				<tr class="success"> 
-					<td>
-						Title
-					</td>
-					<td>
-						Description
-					</td>
-					<td>
-						By
-					</td>
-					<td>
-					-
-					</td>
-				</tr>
-					     <c:forEach items="${entries}" var="entry">
-					     <tr class="info">
-					       <td>${entry.title}</td>
-					       <td>${entry.description}</td>
-					       <td>${entry.author}</td>
-					       <td><a href="${entry.link}">More</a></td>
-					       </tr>
-					    </c:forEach>
-				</table>
+			<a href="/" class="btn btn-inverse" >Back to home</a>
+			     <c:forEach items="${entries}" var="entry">
+			       <p>
+				       <a href="${entry.link}">
+				       <h1>${entry.title}</h1> 
+				       </a>
+				       <h3>${entry.description}</h3>
+				   </p>
+			    </c:forEach>
 			</fieldset>
+		<a href="/" class="btn btn-inverse" >Back to home</a>
 		</form:form>
 	</div>
 	<hr>	
 </div>
-<a href="/" class="btn btn-inverse" >Back to home</a>
 </body>
 </html>
