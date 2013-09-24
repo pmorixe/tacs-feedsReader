@@ -19,16 +19,17 @@
 			<legend>Subscribe me to this channel!</legend>
 				<p>
 					<form:label	for="url" path="url" cssErrorClass="error" >URL: </form:label>
-					<form:input path="url"class="input-medium search-query" /><br/>
+					<form:input path="url" class="input-xxlarge" placeholder="Paste the URL here!" />
+					<br/>
 				</p>
 				<p>
   					<button class="btn btn-primary" type="submit" value="Save">Save</button>
 				</p>
 			</fieldset>
+			<a href="/" class="btn btn-inverse" >Back to home</a>
 		</form:form>
 	</div>
 	<hr>	
 </div>
-<a href="/" class="btn btn-inverse" >Back to home</a>
 </body>
 </html>

@@ -17,6 +17,7 @@
 		<form:form modelAttribute="subscription" action="add" method="post">
 		  	<fieldset>
 			<legend>These are the news!</legend>
+			<a href="/" class="btn btn-inverse" >Back to home</a>
 			     <c:forEach items="${entries}" var="entry">
 			       <p>
 				       <a href="${entry.link}">
@@ -26,10 +27,10 @@
 				   </p>
 			    </c:forEach>
 			</fieldset>
+		<a href="/" class="btn btn-inverse" >Back to home</a>
 		</form:form>
 	</div>
 	<hr>	
 </div>
-<a href="/" class="btn btn-inverse" >Back to home</a>
 </body>
 </html>
