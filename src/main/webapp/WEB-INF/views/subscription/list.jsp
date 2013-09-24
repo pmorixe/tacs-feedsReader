@@ -38,6 +38,7 @@
 					    </c:forEach>
 				</table>
 			</fieldset>
+		<a href="subscription/add">Subscribe to a new channel</a>
 		<a href="/" class="btn btn-inverse" >Back to home</a>
 		</form:form>
 	</div>
