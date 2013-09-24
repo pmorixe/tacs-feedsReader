@@ -1,4 +1,5 @@
 package ar.edu.utn.frba.tacs.grupo1.controller;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -37,8 +38,12 @@ public class SubscriptionController {
 	}
 	@RequestMapping(value="/updates",method=RequestMethod.GET)
     public String getupdatesSubscription(Model model) throws Exception {
-	    Subscription subscription = new Subscription();
-	    List<Entry> entries = subscription.update();
+	    @SuppressWarnings("unchecked")
+      List<Subscription> subscriptions = (List<Subscription>) DAO.list(Subscription.class);
+	    List<Entry> entries = new ArrayList<Entry>();
+	    for (Subscription subscription : subscriptions) {
+	      entries.addAll(subscription.update());
+        }
         model.addAttribute("subscriptions", entries);
         return "subscription/updates";
     }

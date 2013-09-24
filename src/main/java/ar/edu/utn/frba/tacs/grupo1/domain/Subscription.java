@@ -70,7 +70,7 @@ public class Subscription implements Domain {
 	public List<Entry> update() {
       RSSFeedParser parser = new RSSFeedParser(this.url);
       Feed feed = parser.readFeed();      
-      DAO.save(feed);
+      //TODO DAO.save(feed);
       return feed.getEntries();
     }
 }
