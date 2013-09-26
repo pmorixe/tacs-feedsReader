@@ -1,5 +1,6 @@
 package ar.edu.utn.frba.tacs.grupo1.domain;
 
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,8 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import ar.edu.utn.frba.tacs.grupo1.daos.DAO;
-import ar.edu.utn.frba.tacs.grupo1.parser.RSSFeedParser;
+import ar.edu.utn.frba.tacs.grupo1.parser.FeedParser;
+import ar.edu.utn.frba.tacs.grupo1.parser.feed4j.RSSFeedIOException;
+import ar.edu.utn.frba.tacs.grupo1.parser.feed4j.RSSFeedXMLParseException;
+import ar.edu.utn.frba.tacs.grupo1.parser.feed4j.UnsupportedRSSFeedException;
 
 public class Subscription implements Domain {
 
@@ -63,11 +66,24 @@ public class Subscription implements Domain {
     this.feeds = feeds;
   }
 
-  public List<Entry> update() {
-    RSSFeedParser parser = new RSSFeedParser(this.url);
-    Feed feed = parser.readFeed();
-    //DAO.save(feed);
-    return feed.getEntries();
+  public List<Entry> update(){
+	try {
+		
+		FeedParser parser = new FeedParser(this.url);
+	    Feed feed = parser.readFeed();
+	    //DAO.save(feed);
+	    return feed.getEntries(); 
+	    
+	} catch (MalformedURLException e){
+		
+	} catch (UnsupportedRSSFeedException f) {
+		// TODO: handle exception
+	} catch (RSSFeedIOException g){
+		
+	} catch (RSSFeedXMLParseException h) {
+		// TODO: handle exception
+	}
+    return null;
   }
 
 }
