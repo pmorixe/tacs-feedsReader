@@ -13,7 +13,7 @@ import ar.edu.utn.frba.tacs.grupo1.parser.FeedParser;
 import ar.edu.utn.frba.tacs.grupo1.parser.feed4j.RSSFeedIOException;
 import ar.edu.utn.frba.tacs.grupo1.parser.feed4j.RSSFeedXMLParseException;
 import ar.edu.utn.frba.tacs.grupo1.parser.feed4j.UnsupportedRSSFeedException;
-
+import ar.edu.utn.frba.tacs.grupo1.daos.DAO;
 public class Subscription implements Domain {
 
   @Id

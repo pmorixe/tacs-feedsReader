@@ -112,7 +112,6 @@ public class Feed implements Domain {
     this.entries = entries;
   }
 
-  @Override
   public int getId() {
     return this.id;
   }

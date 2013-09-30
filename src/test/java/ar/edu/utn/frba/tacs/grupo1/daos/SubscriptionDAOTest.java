@@ -25,7 +25,7 @@ public class SubscriptionDAOTest {
 
   @Before
   public void setUpSubscription() {
-    this.subscription = new Subscription("www.SuperFooFoo.com");
+    this.subscription = new Subscription("http://clarin.feedsportal.com/c/33088/f/577682/index.rss");
     this.entry = new Entry("Entry title", "Descripcion", "Entry Link", "Juan Carlos", "Sarlanga");
     this.feed = new Feed("feed title", "feed link", "feed summary", "spanish", "cprght", "a pubdate");
   }
@@ -56,7 +56,6 @@ public class SubscriptionDAOTest {
     List<Subscription> list = (List<Subscription>) DAO.list(Subscription.class);
     CollectionUtils.forAllDo(list, new Closure() {
 
-      @Override
       public void execute(Object arg0) {
         Subscription subs = (Subscription) arg0;
         System.out.println("\n" + subs.getFeeds().size() + ":" + subs.getUrl() + "\n");
