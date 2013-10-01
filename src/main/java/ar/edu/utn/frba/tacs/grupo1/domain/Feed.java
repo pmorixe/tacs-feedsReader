@@ -1,5 +1,6 @@
 package ar.edu.utn.frba.tacs.grupo1.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,7 +12,7 @@ import javax.persistence.Id;
 /**
  * La idea es representar una URL, hacia un RSS. Formato http://..../algo.rss
  */
-public class Feed implements Domain {
+public class Feed implements Domain, Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
