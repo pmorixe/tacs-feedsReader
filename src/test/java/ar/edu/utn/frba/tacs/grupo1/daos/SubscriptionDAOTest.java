@@ -14,6 +14,9 @@ import org.junit.Test;
 import ar.edu.utn.frba.tacs.grupo1.domain.Entry;
 import ar.edu.utn.frba.tacs.grupo1.domain.Feed;
 import ar.edu.utn.frba.tacs.grupo1.domain.Subscription;
+import ar.edu.utn.frba.tacs.grupo1.domain.builders.EntryBuilder;
+import ar.edu.utn.frba.tacs.grupo1.domain.builders.FeedBuilder;
+import ar.edu.utn.frba.tacs.grupo1.domain.builders.SubscriptionBuilder;
 
 public class SubscriptionDAOTest {
 
@@ -78,4 +81,25 @@ public class SubscriptionDAOTest {
     DAO.delete(this.subscription);
   }
 
+  public void simplePersistenTest() {
+    Subscription subscription = new SubscriptionBuilder().withUrl("www.pepito.com").build();
+
+    FeedBuilder feedBuilder = new FeedBuilder();
+    Feed feed1 = feedBuilder.withTitle("Titulo 1").build();
+    Feed feed2 = feedBuilder.withTitle("Titulo 2").build();
+
+    EntryBuilder entryBuilder = new EntryBuilder();
+    Entry entry1 = entryBuilder.withTitle("Titulo A").build();
+    Entry entry2 = entryBuilder.withTitle("Titulo B").build();
+
+    feed1.getEntries().add(entry1);
+    feed1.getEntries().add(entry2);
+    feed2.getEntries().add(entry1);
+    feed2.getEntries().add(entry2);
+    subscription.getFeeds().add(feed1);
+    subscription.getFeeds().add(feed2);
+
+    DAO.save(subscription);
+
+  }
 }
