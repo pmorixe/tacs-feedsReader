@@ -63,12 +63,11 @@ public class Subscription implements Domain, Serializable {
   public List<Feed> getFeeds() {
     return feeds;
   }
-  
+
   public List<Entry> getAllEntries() {
     List<Entry> entries = new ArrayList<Entry>();
     for (Feed feed : this.getFeeds()) {
-      entries.addAll(
-          feed.getEntries());
+      entries.addAll(feed.getEntries());
     }
     return entries;
   }
@@ -95,11 +94,14 @@ public class Subscription implements Domain, Serializable {
   }
 
   private void persist(Feed feed) {
-    //TODO validate it's not in the DB already
-    /*Subscription subscription = (Subscription) DAO.getById(Subscription.class, feed.getSubscription().getId());
-    subscription.getFeeds().*/
+    // TODO validate it's not in the DB already
+    /*
+     * Subscription subscription = (Subscription) DAO.getById(Subscription.class,
+     * feed.getSubscription().getId()); subscription.getFeeds().
+     */
+    feed.setSubscription(this);
     DAO.save(feed);
-    
+
   }
 
 }
