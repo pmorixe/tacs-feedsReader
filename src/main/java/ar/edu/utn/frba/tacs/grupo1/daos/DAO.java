@@ -2,14 +2,17 @@ package ar.edu.utn.frba.tacs.grupo1.daos;
 
 import ar.edu.utn.frba.tacs.grupo1.domain.Domain;
 import ar.edu.utn.frba.tacs.grupo1.hibernate.HibernateUtil;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
+import java.io.Console;
+import java.lang.reflect.Method;
 import java.util.List;
 
 public class DAO {
 
-	private static Session getCurrentSession() {
+	protected static Session getCurrentSession() {
 		return HibernateUtil.getSessionFactory().getCurrentSession();
 	}
 
@@ -55,5 +58,17 @@ public class DAO {
 			return allResults.get(0);
 		return null;
 	}
+	public static List<?> getByFilter(@SuppressWarnings("rawtypes") Class domainClass, Method method, int valueRequired) {
+      String className = domainClass.getSimpleName();
+      String field = method.getName().replaceFirst("get", "").toLowerCase();
+      Session session = getCurrentSession();
+      session.getTransaction().begin();
+      List<?> allResults = session.createQuery("from " + className + " where " + field + "=" + 
+            String.valueOf(valueRequired)).list();
+      session.getTransaction().commit();
+      if (allResults.size() > 0)
+          return allResults;
+      return null;
+  }
 
 }

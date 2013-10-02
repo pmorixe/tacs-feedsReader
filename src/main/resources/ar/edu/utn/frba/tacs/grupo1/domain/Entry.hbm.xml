@@ -20,9 +20,9 @@
         
         <property name="guid" type="java.lang.String"/>
         
-<!--         <many-to-one name="feed" class="ar.edu.utn.frba.tacs.grupo1.domain.Feed"> -->
-<!--             <column name="IDFEED" not-null="true" /> -->
-<!--         </many-to-one> -->
+        <many-to-one name="feed" class="ar.edu.utn.frba.tacs.grupo1.domain.Feed">
+            <column name="IDFEED" not-null="true" />
+        </many-to-one>
          
    </class>
 </hibernate-mapping>

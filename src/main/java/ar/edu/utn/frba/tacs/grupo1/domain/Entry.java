@@ -1,11 +1,13 @@
 package ar.edu.utn.frba.tacs.grupo1.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 //Representa un Mensaje de Feed, un articulo o lo que sea
-public class Entry {
+public class Entry implements Serializable {
 
   public Entry(String title, String description, String link, String author, String guid) {
     this.title = title;
