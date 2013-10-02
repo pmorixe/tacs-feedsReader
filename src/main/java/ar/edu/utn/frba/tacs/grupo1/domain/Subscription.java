@@ -98,6 +98,7 @@ public class Subscription implements Domain, Serializable {
     //TODO validate it's not in the DB already
     /*Subscription subscription = (Subscription) DAO.getById(Subscription.class, feed.getSubscription().getId());
     subscription.getFeeds().*/
+    feed.setSubscription(this);
     DAO.save(feed);
     
   }
