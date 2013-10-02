@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import ar.edu.utn.frba.tacs.grupo1.daos.DAO;
 import ar.edu.utn.frba.tacs.grupo1.parser.FeedParser;
 import ar.edu.utn.frba.tacs.grupo1.parser.feed4j.RSSFeedIOException;
 import ar.edu.utn.frba.tacs.grupo1.parser.feed4j.RSSFeedXMLParseException;
@@ -62,19 +63,26 @@ public class Subscription implements Domain, Serializable {
   public List<Feed> getFeeds() {
     return feeds;
   }
+  
+  public List<Entry> getAllEntries() {
+    List<Entry> entries = new ArrayList<Entry>();
+    for (Feed feed : this.getFeeds()) {
+      entries.addAll(
+          feed.getEntries());
+    }
+    return entries;
+  }
 
   public void setFeeds(List<Feed> feeds) {
     this.feeds = feeds;
   }
 
-  public List<Entry> update() {
+  public void update() {
     try {
-
       FeedParser parser = new FeedParser(this.url);
       Feed feed = parser.readFeed();
-      // DAO.save(feed);
-      return feed.getEntries();
-
+      this.feeds.add(feed);
+      this.persist(feed);
     } catch (MalformedURLException e) {
 
     } catch (UnsupportedRSSFeedException f) {
@@ -84,7 +92,14 @@ public class Subscription implements Domain, Serializable {
     } catch (RSSFeedXMLParseException h) {
       // TODO: handle exception
     }
-    return null;
+  }
+
+  private void persist(Feed feed) {
+    //TODO validate it's not in the DB already
+    /*Subscription subscription = (Subscription) DAO.getById(Subscription.class, feed.getSubscription().getId());
+    subscription.getFeeds().*/
+    DAO.save(feed);
+    
   }
 
 }

@@ -27,7 +27,12 @@
 	</p>
 	<p>
 		<ul>
-			<li><a href="subscription/updates">Show me the news</a></li>
+			<li><a href="subscription/update">Update the news</a></li>
+		</ul>
+	</p>
+	<p>
+		<ul>
+			<li><a href="subscription/read">Show me the news</a></li>
 		</ul>
 	</p>
 	<hr>	

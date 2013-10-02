@@ -20,9 +20,6 @@
 				<table class="table table-condensed">
 				<tr class="success"> 
 					<td>
-						#
-					</td>
-					<td>
 						URL
 					</td>
 					<td>
@@ -31,14 +28,13 @@
 				</tr>
 					     <c:forEach items="${subscriptions}" var="subscription">
 					     <tr class="info">
-					       <td>${subscription.id}</td>
 					       <td>${subscription.url}</td>
 					       <td>${subscription.since}</td>
 					       </tr>
 					    </c:forEach>
 				</table>
 			</fieldset>
-		<a href="subscription/add">Subscribe to a new channel</a>
+		<a href="add">Subscribe to a new channel</a>
 		<a href="/" class="btn btn-inverse" >Back to home</a>
 		</form:form>
 	</div>

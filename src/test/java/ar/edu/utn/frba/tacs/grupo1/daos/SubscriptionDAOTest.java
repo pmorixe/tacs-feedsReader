@@ -3,6 +3,7 @@ package ar.edu.utn.frba.tacs.grupo1.daos;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertNotNull;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 import org.apache.commons.collections.Closure;
@@ -34,11 +35,19 @@ public class SubscriptionDAOTest {
   }
 
   @Test
-  public void testSaveSubscription() {
+  public void testSaveSubscriptionAndGetFeeds() {
     feed.getEntries().add(entry);
     subscription.getFeeds().add(feed);
     int createdId = DAO.save(this.subscription);
     assert (createdId != 0);
+    
+    subscription = (Subscription) DAO.getById(Subscription.class, createdId);
+    assertNotNull(subscription);
+    assert (subscription.getId() == createdId);
+    
+    assert(subscription.getFeeds().size() >0 );
+    
+    assert(subscription.getAllEntries().size()>0);
   }
 
   @Test
@@ -48,7 +57,7 @@ public class SubscriptionDAOTest {
     assertNotNull(subscription);
     assert (subscription.getId() == createdId);
   }
-
+  
   @Test
   public void testGetSubscriptionsList() {
     feed.getEntries().add(entry);

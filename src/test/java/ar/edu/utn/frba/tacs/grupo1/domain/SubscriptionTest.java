@@ -18,11 +18,11 @@ public class SubscriptionTest {
 
   @SuppressWarnings("unchecked")
   @Test
-  public void updatesBringsAtLeastOneEntry() throws MalformedURLException, UnsupportedRSSFeedException, RSSFeedIOException, RSSFeedXMLParseException {
+  public void getAllEntriesBringsAtLeastOneEntry() throws MalformedURLException, UnsupportedRSSFeedException, RSSFeedIOException, RSSFeedXMLParseException {
     List<Subscription> subscriptions = (List<Subscription>) DAO.list(Subscription.class);
     List<Entry> entries = new ArrayList<Entry>();
     for (Subscription subscription : subscriptions) {
-      entries.addAll(subscription.update());
+      entries.addAll(subscription.getAllEntries());
     }
     assert(entries.size()>0);
   }

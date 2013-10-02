@@ -20,7 +20,7 @@ public class SubscriptionController {
 	
   @RequestMapping(value="/add",method=RequestMethod.GET)
 	public String getaddSubscription(Model model) {
-		model.addAttribute(new Subscription());
+		model.addAttribute("subscription", new Subscription());
 		return "subscription/add";
 	}
 	@RequestMapping(value="/add",method=RequestMethod.POST)
@@ -36,15 +36,28 @@ public class SubscriptionController {
 		model.addAttribute("subscriptions", DAO.list(Subscription.class));
 		return "subscription/list";
 	}
-	@RequestMapping(value="/updates",method=RequestMethod.GET)
-    public String getupdatesSubscription(Model model) throws Exception {
+	@RequestMapping(value="/read",method=RequestMethod.GET)
+    public String getreadSubscription(Model model) throws Exception {
 	    @SuppressWarnings("unchecked")
         List<Subscription> subscriptions = (List<Subscription>) DAO.list(Subscription.class);
 	    List<Entry> entries = new ArrayList<Entry>();
 	    for (Subscription subscription : subscriptions) {
-	      entries.addAll(subscription.update());
+	      entries.addAll(subscription.getAllEntries());
         }
         model.addAttribute("entries", entries);
-        return "subscription/updates";
+        return "subscription/read";
+    }
+	
+	@RequestMapping(value="/update",method=RequestMethod.GET)
+    public String getupdateSubscription(Model model) throws Exception {
+        @SuppressWarnings("unchecked")
+        List<Subscription> subscriptions = (List<Subscription>) DAO.list(Subscription.class);
+        List<Entry> entries = new ArrayList<Entry>();
+        for (Subscription subscription : subscriptions) {
+          subscription.update();
+          entries.addAll(subscription.getAllEntries());
+        }
+        model.addAttribute("entries", entries);
+        return "subscription/read";
     }
 }
