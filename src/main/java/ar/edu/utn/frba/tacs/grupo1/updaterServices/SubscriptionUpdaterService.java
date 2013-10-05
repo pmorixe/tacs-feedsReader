@@ -17,17 +17,21 @@ public class SubscriptionUpdaterService {
 
   public static void update(Subscription subscription) {
     try {
+      int updates = 0;
       FeedParser parser = new FeedParser(subscription.getUrl());
       Feed newFeed = parser.readFeed();
       // Me fijo si existe en la subscripcion
       Feed feed = (Feed) CollectionUtils.find(subscription.getFeeds(),
           new AlreadySubscribedPredicate(newFeed));
       if (feed != null) {
-        FeedUpdaterService.update(feed, newFeed.getEntries());
+        updates = FeedUpdaterService.update(feed, newFeed.getEntries());
       } else {
         subscription.getFeeds().add(newFeed);
+        updates++;
       }
-      DAO.save(subscription);
+      // Si hay actualizaciones grabo
+      if (updates > 0)
+        DAO.save(subscription);
     } catch (MalformedURLException e) {
       // TODO: handle exception
     } catch (UnsupportedRSSFeedException f) {
