@@ -12,7 +12,7 @@ public class AlreadySubscribedPredicate implements Predicate {
 
   public AlreadySubscribedPredicate(Feed feed) {
     this.urlToStringNewFeed = feed.getUrl().toString();
-    this.pubDateNewFeed = feed.getPubDate();
+    // this.pubDateNewFeed = feed.getPubDate();
   }
 
   @Override
@@ -20,7 +20,7 @@ public class AlreadySubscribedPredicate implements Predicate {
     String urlToStringFeed = ((Feed) arg0).getUrl().toString();
     String pubDateFeed = ((Feed) arg0).getPubDate();
 
-    return pubDateFeed.equals(pubDateNewFeed) && urlToStringFeed.equals(urlToStringNewFeed);
+    return urlToStringFeed.equals(urlToStringNewFeed);
   }
 
 }
