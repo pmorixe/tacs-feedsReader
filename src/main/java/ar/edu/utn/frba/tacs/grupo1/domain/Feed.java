@@ -125,8 +125,8 @@ public class Feed implements Domain, Serializable {
     return subscription;
   }
 
-  public void setSubscription(Subscription subcription) {
-    this.subscription = subcription;
+  public void setSubscription(Subscription subscription) {
+    this.subscription = subscription;
   }
 
 }

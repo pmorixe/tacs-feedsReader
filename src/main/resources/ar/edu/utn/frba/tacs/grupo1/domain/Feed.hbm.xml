@@ -25,7 +25,7 @@
         <property name="createdDate" type="java.util.Date"/>
         
         <many-to-one name="subscription" class="ar.edu.utn.frba.tacs.grupo1.domain.Subscription">
-            <column name="idSubscription" not-null="true" />
+            <column name="idSubscription" />
         </many-to-one>
         
         <bag name="entries" lazy="false" cascade="all-delete-orphan">

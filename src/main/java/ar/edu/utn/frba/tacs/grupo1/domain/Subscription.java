@@ -1,7 +1,6 @@
 package ar.edu.utn.frba.tacs.grupo1.domain;
 
 import java.io.Serializable;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,12 +8,6 @@ import java.util.List;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import ar.edu.utn.frba.tacs.grupo1.daos.DAO;
-import ar.edu.utn.frba.tacs.grupo1.parser.FeedParser;
-import ar.edu.utn.frba.tacs.grupo1.parser.feed4j.RSSFeedIOException;
-import ar.edu.utn.frba.tacs.grupo1.parser.feed4j.RSSFeedXMLParseException;
-import ar.edu.utn.frba.tacs.grupo1.parser.feed4j.UnsupportedRSSFeedException;
 
 public class Subscription implements Domain, Serializable {
 
@@ -74,32 +67,6 @@ public class Subscription implements Domain, Serializable {
 
   public void setFeeds(List<Feed> feeds) {
     this.feeds = feeds;
-  }
-
-  public void update() {
-    try {
-      FeedParser parser = new FeedParser(this.url);
-      Feed feed = parser.readFeed();
-      this.feeds.add(feed);
-      this.persist(feed);
-    } catch (MalformedURLException e) {
-
-    } catch (UnsupportedRSSFeedException f) {
-      // TODO: handle exception
-    } catch (RSSFeedIOException g) {
-
-    } catch (RSSFeedXMLParseException h) {
-      // TODO: handle exception
-    }
-  }
-
-  private void persist(Feed feed) {
-    //TODO validate it's not in the DB already
-    /*Subscription subscription = (Subscription) DAO.getById(Subscription.class, feed.getSubscription().getId());
-    subscription.getFeeds().*/
-    feed.setSubscription(this);
-    DAO.save(feed);
-
   }
 
 }
