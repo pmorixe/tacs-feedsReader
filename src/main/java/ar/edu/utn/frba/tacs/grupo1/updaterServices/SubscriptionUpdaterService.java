@@ -15,7 +15,15 @@ import ar.edu.utn.frba.tacs.grupo1.predicates.AlreadySubscribedPredicate;
 
 public class SubscriptionUpdaterService {
 
-  public static void update(Subscription subscription) {
+  private static SubscriptionUpdaterService instance = null;
+
+  public static SubscriptionUpdaterService getInstance() {
+    if (instance == null)
+      return instance = new SubscriptionUpdaterService();
+    return instance;
+  }
+
+  public void update(Subscription subscription) {
     try {
       int updates = 0;
       FeedParser parser = new FeedParser(subscription.getUrl());
@@ -24,14 +32,14 @@ public class SubscriptionUpdaterService {
       Feed feed = (Feed) CollectionUtils.find(subscription.getFeeds(),
           new AlreadySubscribedPredicate(newFeed));
       if (feed != null) {
-        updates = FeedUpdaterService.update(feed, newFeed.getEntries());
+        updates = FeedUpdaterService.getInstance().update(feed, newFeed.getEntries());
       } else {
         subscription.getFeeds().add(newFeed);
         updates++;
       }
       // Si hay actualizaciones grabo
       if (updates > 0)
-        DAO.save(subscription);
+        DAO.getInstance().save(subscription);
     } catch (MalformedURLException e) {
       // TODO: handle exception
     } catch (UnsupportedRSSFeedException f) {

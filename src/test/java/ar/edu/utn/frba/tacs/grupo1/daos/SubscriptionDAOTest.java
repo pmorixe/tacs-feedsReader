@@ -3,7 +3,6 @@ package ar.edu.utn.frba.tacs.grupo1.daos;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertNotNull;
 
-import java.lang.reflect.Method;
 import java.util.List;
 
 import org.apache.commons.collections.Closure;
@@ -38,34 +37,34 @@ public class SubscriptionDAOTest {
   public void testSaveSubscriptionAndGetFeeds() {
     feed.getEntries().add(entry);
     subscription.getFeeds().add(feed);
-    int createdId = DAO.save(this.subscription);
+    int createdId = DAO.getInstance().save(this.subscription);
     assert (createdId != 0);
-    
-    subscription = (Subscription) DAO.getById(Subscription.class, createdId);
+
+    subscription = (Subscription) DAO.getInstance().getById(Subscription.class, createdId);
     assertNotNull(subscription);
     assert (subscription.getId() == createdId);
-    
-    assert(subscription.getFeeds().size() >0 );
-    
-    assert(subscription.getAllEntries().size()>0);
+
+    assert (subscription.getFeeds().size() > 0);
+
+    assert (subscription.getAllEntries().size() > 0);
   }
 
   @Test
   public void testGetSubscriptionsById() {
-    int createdId = DAO.save(this.subscription);
-    subscription = (Subscription) DAO.getById(Subscription.class, createdId);
+    int createdId = DAO.getInstance().save(this.subscription);
+    subscription = (Subscription) DAO.getInstance().getById(Subscription.class, createdId);
     assertNotNull(subscription);
     assert (subscription.getId() == createdId);
   }
-  
+
   @Test
   public void testGetSubscriptionsList() {
     feed.getEntries().add(entry);
     subscription.getFeeds().add(feed);
     subscription.getFeeds().add(feed);
     subscription.getFeeds().add(feed);
-    DAO.save(this.subscription);
-    List<Subscription> list = (List<Subscription>) DAO.list(Subscription.class);
+    DAO.getInstance().save(this.subscription);
+    List<Subscription> list = (List<Subscription>) DAO.getInstance().list(Subscription.class);
     CollectionUtils.forAllDo(list, new Closure() {
 
       public void execute(Object arg0) {
@@ -87,7 +86,7 @@ public class SubscriptionDAOTest {
 
   @After
   public void tearDownSubscription() {
-    DAO.delete(this.subscription);
+    DAO.getInstance().delete(this.subscription);
   }
 
   public void simplePersistenTest() {
@@ -108,7 +107,7 @@ public class SubscriptionDAOTest {
     subscription.getFeeds().add(feed1);
     subscription.getFeeds().add(feed2);
 
-    DAO.save(subscription);
+    DAO.getInstance().save(subscription);
 
   }
 }

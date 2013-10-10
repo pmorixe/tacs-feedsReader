@@ -22,7 +22,7 @@
 	</p>
 	<p>
 		<ul>
-			<li><a href="subscription/list">Show me the channels I'm subscribed to</a></li>
+			<li><a href="feed/list">Show me the channels I'm subscribed to</a></li>
 		</ul>
 	</p>
 	<p>

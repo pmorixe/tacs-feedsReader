@@ -31,20 +31,20 @@ public class SubscriptionController {
     if (result.hasErrors()) {
       return "subscription/add";
     }
-    DAO.save(subscription);
+    DAO.getInstance().save(subscription);
     return "redirect:/";
   }
 
   @RequestMapping(value = "/list", method = RequestMethod.GET)
   public String getlistSubscription(Model model) throws Exception {
-    model.addAttribute("subscriptions", DAO.list(Subscription.class));
+    model.addAttribute("subscriptions", DAO.getInstance().list(Subscription.class));
     return "subscription/list";
   }
 
   @RequestMapping(value = "/read", method = RequestMethod.GET)
   public String getreadSubscription(Model model) throws Exception {
     @SuppressWarnings("unchecked")
-    List<Subscription> subscriptions = (List<Subscription>) DAO.list(Subscription.class);
+    List<Subscription> subscriptions = (List<Subscription>) DAO.getInstance().list(Subscription.class);
     List<Entry> entries = new ArrayList<Entry>();
     for (Subscription subscription : subscriptions) {
       entries.addAll(subscription.getAllEntries());
@@ -56,10 +56,10 @@ public class SubscriptionController {
   @RequestMapping(value = "/update", method = RequestMethod.GET)
   public String getupdateSubscription(Model model) throws Exception {
     @SuppressWarnings("unchecked")
-    List<Subscription> subscriptions = (List<Subscription>) DAO.list(Subscription.class);
+    List<Subscription> subscriptions = (List<Subscription>) DAO.getInstance().list(Subscription.class);
     List<Entry> entries = new ArrayList<Entry>();
     for (Subscription subscription : subscriptions) {
-      SubscriptionUpdaterService.update(subscription);
+      SubscriptionUpdaterService.getInstance().update(subscription);
       entries.addAll(subscription.getAllEntries());
     }
     model.addAttribute("entries", entries);

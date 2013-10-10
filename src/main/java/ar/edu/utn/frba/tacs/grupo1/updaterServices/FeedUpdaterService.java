@@ -10,7 +10,15 @@ import ar.edu.utn.frba.tacs.grupo1.predicates.EntryAlreadyExistsPredicate;
 
 public class FeedUpdaterService {
 
-  public static int update(Feed feed, List<Entry> newEntries) {
+  private static FeedUpdaterService instance = null;
+
+  public static FeedUpdaterService getInstance() {
+    if (instance == null)
+      return instance = new FeedUpdaterService();
+    return instance;
+  }
+
+  public int update(Feed feed, List<Entry> newEntries) {
     List<Entry> entries = feed.getEntries();
     int updates = 0;
     for (Entry newEntry : newEntries) {

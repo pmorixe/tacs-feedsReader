@@ -11,7 +11,15 @@ import ar.edu.utn.frba.tacs.grupo1.hibernate.HibernateUtil;
 
 public class DAO {
 
-  protected static Session getCurrentSession() {
+  private static DAO instance = null;
+
+  public static DAO getInstance() {
+    if (instance == null)
+      return instance = new DAO();
+    return instance;
+  }
+
+  public static Session getCurrentSession() {
     return HibernateUtil.getSessionFactory().getCurrentSession();
   }
 
@@ -19,7 +27,7 @@ public class DAO {
    * @param domainObject
    * @throws HibernateException
    */
-  public static int save(Domain domainObject) throws HibernateException {
+  public int save(Domain domainObject) throws HibernateException {
     Session session = getCurrentSession();
     session.beginTransaction();
     session.saveOrUpdate(domainObject);
@@ -31,7 +39,7 @@ public class DAO {
    * @param domainObject
    * @throws HibernateException
    */
-  public static void delete(Domain domainObject) throws HibernateException {
+  public void delete(Domain domainObject) throws HibernateException {
     Session session = getCurrentSession();
     session.beginTransaction();
     session.delete(domainObject);
@@ -47,7 +55,7 @@ public class DAO {
     return result;
   }
 
-  public static Object getById(@SuppressWarnings("rawtypes") Class domainClass, int id) {
+  public Object getById(@SuppressWarnings("rawtypes") Class domainClass, int id) {
     String className = domainClass.getName();
     Session session = getCurrentSession();
     session.getTransaction().begin();
@@ -58,8 +66,7 @@ public class DAO {
     return null;
   }
 
-  public static List<?> getByFilter(@SuppressWarnings("rawtypes") Class domainClass, Method method,
-      int valueRequired) {
+  public List<?> getByFilter(@SuppressWarnings("rawtypes") Class domainClass, Method method, int valueRequired) {
     String className = domainClass.getSimpleName();
     String field = method.getName().replaceFirst("get", "").toLowerCase();
     Session session = getCurrentSession();

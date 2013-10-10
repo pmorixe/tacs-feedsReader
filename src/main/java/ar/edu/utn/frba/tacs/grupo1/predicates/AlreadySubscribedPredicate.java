@@ -18,7 +18,7 @@ public class AlreadySubscribedPredicate implements Predicate {
   @Override
   public boolean evaluate(Object arg0) {
     String urlToStringFeed = ((Feed) arg0).getUrl().toString();
-    String pubDateFeed = ((Feed) arg0).getPubDate();
+    // String pubDateFeed = ((Feed) arg0).getPubDate();
 
     return urlToStringFeed.equals(urlToStringNewFeed);
   }
