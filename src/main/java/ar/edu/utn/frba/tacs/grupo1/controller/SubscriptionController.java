@@ -66,4 +66,10 @@ public class SubscriptionController {
     model.addAttribute("entries", entries);
     return "subscription/read";
   }
+
+  @RequestMapping(value = "/login", method = RequestMethod.GET)
+  public String getlogin(Model model) throws Exception {
+
+    return "account/login";
+  }
 }

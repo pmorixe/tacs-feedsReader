@@ -35,6 +35,7 @@
 			<li><a href="subscription/read">Show me the news</a></li>
 		</ul>
 	</p>
+	
 	<hr>	
 </div>
 </body>

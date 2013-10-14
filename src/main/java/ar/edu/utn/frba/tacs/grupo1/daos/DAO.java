@@ -19,7 +19,7 @@ public class DAO {
     return instance;
   }
 
-  public static Session getCurrentSession() {
+  protected static Session getCurrentSession() {
     return HibernateUtil.getSessionFactory().getCurrentSession();
   }
 
