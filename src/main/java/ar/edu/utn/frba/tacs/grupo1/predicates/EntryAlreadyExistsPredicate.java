@@ -12,7 +12,6 @@ public class EntryAlreadyExistsPredicate implements Predicate {
     newEntryLink = newEntry.getLink();
   }
 
-  @Override
   public boolean evaluate(Object arg0) {
     Entry entry = (Entry) arg0;
     return newEntryLink.equals(entry.getLink());

@@ -35,6 +35,9 @@
 			<li><a href="subscription/read">Show me the news</a></li>
 		</ul>
 	</p>
+	<p>
+	<a href="<c:url value="/j_spring_security_logout" />" >Logout</a> <br/>
+	</p>
 	<hr>	
 </div>
 </body>

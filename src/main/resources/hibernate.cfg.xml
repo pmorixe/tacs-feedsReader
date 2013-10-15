@@ -34,6 +34,8 @@
         <mapping resource="ar/edu/utn/frba/tacs/grupo1/domain/Subscription.hbm.xml"/>
         <mapping resource="ar/edu/utn/frba/tacs/grupo1/domain/Feed.hbm.xml"/>
         <mapping resource="ar/edu/utn/frba/tacs/grupo1/domain/Entry.hbm.xml"/>
+        <mapping class="ar.edu.utn.frba.tacs.grupo1.domain.User"/>
+        <mapping class="ar.edu.utn.frba.tacs.grupo1.domain.Role"/>
     
     </session-factory>
 
