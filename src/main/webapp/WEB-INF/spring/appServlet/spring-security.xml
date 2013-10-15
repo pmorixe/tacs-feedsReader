@@ -12,13 +12,16 @@
 <!--         <intercept-url pattern="/admin/*" access="ROLE_ADMIN"/>   -->
 <!-- 		<intercept-url pattern="/subscription/*" access="ROLE_USER"/> -->
 		<intercept-url pattern="/login-form" access="ROLE_ANONYMOUS"/>
+		<intercept-url pattern="/register" access="ROLE_ANONYMOUS"/>
+		<intercept-url pattern="/error-login" access="ROLE_ADMIN,ROLE_USER,ROLE_MODERATOR,ROLE_ANONYMOUS"/> 
+		<intercept-url pattern="/j_spring_security_check" access="ROLE_ANONYMOUS"/>
 		<intercept-url pattern="/*" access="ROLE_ADMIN,ROLE_USER,ROLE_MODERATOR"/>
-		<intercept-url pattern="/j_spring_security_check" access="ROLE_ANONYMOUS"/> 
 		
          <form-login 	login-page="/login-form"
          				default-target-url="/success-login"  
          			 	login-processing-url="/j_spring_security_check"
-         				always-use-default-target="true" />
+         				always-use-default-target="true" 
+         				authentication-failure-url="/error-login"/>
         <logout logout-success-url="/login-form"/>
     </http>
 

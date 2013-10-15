@@ -6,17 +6,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.css" />" >
 <title>Login page</title>
-<style>
-.error {
-	color: red;
-}
+<style>.error {	color: red;}
 </style>
 </head>
 <body>
-	<div class="container">  
+	<div class="container" align="center" >  
 		<h1>Login page</h1>
 		
 		<p>
@@ -45,7 +41,7 @@
 		</form>	
 		
 		<p>
-		<a href="${pageContext.request.contextPath}/">Home page</a><br/>
+		<a href="${pageContext.request.contextPath}/register">Register</a><br/>
 		</p>
 	</div>
 </body>
