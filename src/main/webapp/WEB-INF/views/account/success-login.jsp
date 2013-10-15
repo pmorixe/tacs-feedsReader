@@ -6,7 +6,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.css" />" >
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Welcome page</title>
 </head>
 <body>

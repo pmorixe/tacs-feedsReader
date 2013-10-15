@@ -15,7 +15,7 @@ public class LoginController {
 
   @RequestMapping(value = "/error-login", method = RequestMethod.GET)
   public ModelAndView invalidLogin() {
-    ModelAndView modelAndView = new ModelAndView("login-form");
+    ModelAndView modelAndView = new ModelAndView("/account/login-form");
     modelAndView.addObject("error", true);
     return modelAndView;
   }
@@ -23,6 +23,11 @@ public class LoginController {
   @RequestMapping(value = "/success-login", method = RequestMethod.GET)
   public ModelAndView successLogin() {
     return new ModelAndView("/account/success-login");
+  }
+
+  @RequestMapping(value = "/register", method = RequestMethod.GET)
+  public ModelAndView register() {
+    return new ModelAndView("noImplementado");
   }
 
 }
