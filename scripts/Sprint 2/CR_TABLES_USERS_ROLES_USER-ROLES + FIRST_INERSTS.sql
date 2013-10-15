@@ -24,3 +24,5 @@ INSERT INTO roles (role) VALUES ('admin'), ('moderator');
 INSERT INTO users (USERNAME, PASSWORD) VALUES ('moder', 'moder'), ('admin', 'admin');  
   
 /*INSERT INTO user_roles (user_id, role_id) VALUES (5, 6), (6, 5);  */
+
+ALTER TABLE entry ADD COLUMN important BIT;
