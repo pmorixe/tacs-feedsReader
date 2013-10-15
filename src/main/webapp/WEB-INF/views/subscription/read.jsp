@@ -20,6 +20,18 @@
 			<a href="/" class="btn btn-inverse" >Back to home</a>
 			     <c:forEach items="${entries}" var="entry">
 			       <p>
+			       	<c:choose>
+				      <c:when test="${entry.important==true}">
+			       			<i class=" icon-star"></i>
+				      </c:when>
+						<c:otherwise>
+						
+			       	   <a href="/subscription/important?id=${entry.id}">
+				       <i class=" icon-star-empty"></i>
+				       </a>
+						
+				      </c:otherwise>
+				</c:choose>
 				       <a href="${entry.link}">
 				       <h1>${entry.title}</h1> 
 				       </a>
