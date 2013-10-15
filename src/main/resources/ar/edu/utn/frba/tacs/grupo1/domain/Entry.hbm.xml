@@ -20,6 +20,8 @@
         
         <property name="guid" type="java.lang.String"/>
         
+        <property name="important" type="java.lang.Boolean"/>
+        
         <many-to-one name="feed" class="ar.edu.utn.frba.tacs.grupo1.domain.Feed">
             <column name="IDFEED" />
         </many-to-one>

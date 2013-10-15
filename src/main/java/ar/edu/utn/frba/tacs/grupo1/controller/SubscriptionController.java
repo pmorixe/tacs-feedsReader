@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ar.edu.utn.frba.tacs.grupo1.daos.DAO;
 import ar.edu.utn.frba.tacs.grupo1.domain.Entry;
@@ -34,7 +35,15 @@ public class SubscriptionController {
     DAO.getInstance().save(subscription);
     return "redirect:/";
   }
-
+  
+  @RequestMapping(value = "/important", method = RequestMethod.GET)
+  public String importantEntry(@RequestParam("id") Integer entryId) throws Exception {
+    Entry entry = (Entry) DAO.getInstance().getById(Entry.class, entryId);
+    entry.setImportant(!entry.getImportant()); //marca o desmarca como importante
+    DAO.getInstance().save(entry);
+    return "redirect:/subscription/read";
+  }
+  
   @RequestMapping(value = "/list", method = RequestMethod.GET)
   public String getlistSubscription(Model model) throws Exception {
     List<?> list = DAO.getInstance().list(Subscription.class);

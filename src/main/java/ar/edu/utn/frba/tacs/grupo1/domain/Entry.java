@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 //Representa un Mensaje de Feed, un articulo o lo que sea
-public class Entry implements Serializable {
+public class Entry implements Domain, Serializable {
 
   public Entry(String title, String description, String link, String author, String guid) {
     this.title = title;
@@ -36,7 +36,9 @@ public class Entry implements Serializable {
   private String guid;
 
   private Feed feed;// Padre
-
+  
+  private Boolean important;
+  
   public int getId() {
     return id;
   }
@@ -97,6 +99,14 @@ public class Entry implements Serializable {
   public String toString() {
     return "FeedMessage [title=" + title + ", description=" + description + ", link=" + link + ", author="
         + author + ", guid=" + guid + "]";
+  }
+
+  public Boolean getImportant() {
+    return important;
+  }
+
+  public void setImportant(Boolean important) {
+    this.important = important;
   }
 
 }
