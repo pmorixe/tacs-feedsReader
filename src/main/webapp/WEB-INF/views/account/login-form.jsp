@@ -26,11 +26,11 @@
 		<tbody>
 		<tr>
 		<td>Login:</td>
-		<td><input type="text" name="j_username" id="j_username"size="30" maxlength="40"  /></td>
+		<td><input type="text" name="j_username" id="j_username" placeholder="admin" size="30" maxlength="40"  /></td>
 		</tr>
 		<tr>
 		<td>Password:</td>
-		<td><input type="password" name="j_password" id="j_password" size="30" maxlength="32" /></td>
+		<td><input type="password" name="j_password" id="j_password" placeholder="admin" size="30" maxlength="32" /></td>
 		</tr>
 		<tr>
 		<td></td>

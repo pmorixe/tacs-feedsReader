@@ -13,13 +13,14 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import ar.edu.utn.frba.tacs.grupo1.daos.UsersDAO;
+import ar.edu.utn.frba.tacs.grupo1.domain.MyUser;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-    ar.edu.utn.frba.tacs.grupo1.domain.User domainUser = UsersDAO.getInstance().getUser(username);
+    MyUser domainUser = UsersDAO.getInstance().getUser(username);
 
     boolean enabled = true;
     boolean accountNonExpired = true;
@@ -57,6 +58,11 @@ public class CustomUserDetailsService implements UserDetailsService {
       authorities.add(new SimpleGrantedAuthority(role));
     }
     return authorities;
+  }
+
+  public boolean validateUser(MyUser user) {
+    return false;
+
   }
 
 }

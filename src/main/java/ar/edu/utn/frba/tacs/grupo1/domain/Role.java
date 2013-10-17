@@ -27,7 +27,7 @@ public class Role {
   }, inverseJoinColumns = {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
   })
-  private Set<User> userRoles;
+  private Set<MyUser> userRoles;
 
   public Integer getId() {
     return id;
@@ -45,11 +45,11 @@ public class Role {
     this.role = role;
   }
 
-  public Set<User> getUserRoles() {
+  public Set<MyUser> getUserRoles() {
     return userRoles;
   }
 
-  public void setUserRoles(Set<User> userRoles) {
+  public void setUserRoles(Set<MyUser> userRoles) {
     this.userRoles = userRoles;
   }
 
