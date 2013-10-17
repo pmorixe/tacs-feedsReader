@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.utn.frba.tacs.grupo1.domain.MyUser;
+import ar.edu.utn.frba.tacs.grupo1.updaterServices.MyUserUpdaterServices;
 
 @Controller
 public class LoginController {
@@ -38,12 +39,12 @@ public class LoginController {
   }
 
   @RequestMapping(value = "/register", method = RequestMethod.POST)
-  public String registerPost(@Valid MyUser user, BindingResult result) {
-    if (result.hasErrors()) {
-      return "register";
+  public ModelAndView registerPost(@Valid MyUser user, BindingResult result) {
+    ModelAndView modelAndView = new ModelAndView("/account/login-form");
+    String welcomeUsername = MyUserUpdaterServices.getInstance().validateAndRegisterUser(user);
+    if (welcomeUsername == null) {
+      modelAndView.addObject("error", true);
     }
-
-    return "/home";
+    return modelAndView;
   }
-
 }
