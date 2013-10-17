@@ -28,7 +28,7 @@ public class UsersDAO {
     Session session = getCurrentSession();
     List<MyUser> userList = new ArrayList<MyUser>();
     session.getTransaction().begin();
-    Query query = session.createQuery("from User u where u.username = :username");
+    Query query = session.createQuery("from MyUser u where u.username = :username");
     query.setParameter("username", username);
     userList = query.list();
     session.getTransaction().commit();
@@ -36,5 +36,12 @@ public class UsersDAO {
       return userList.get(0);
     else
       return null;
+  }
+
+  public void registerUser(MyUser newUser) {
+    Session session = getCurrentSession();
+    session.beginTransaction();
+    session.saveOrUpdate(newUser);
+    session.getTransaction().commit();
   }
 }

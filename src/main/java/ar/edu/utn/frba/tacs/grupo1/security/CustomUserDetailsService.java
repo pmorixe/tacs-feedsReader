@@ -60,9 +60,4 @@ public class CustomUserDetailsService implements UserDetailsService {
     return authorities;
   }
 
-  public boolean validateUser(MyUser user) {
-    return false;
-
-  }
-
 }
