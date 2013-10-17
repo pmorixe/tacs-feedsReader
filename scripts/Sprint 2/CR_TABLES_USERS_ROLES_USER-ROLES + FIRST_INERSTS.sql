@@ -26,3 +26,8 @@ INSERT INTO users (USERNAME, PASSWORD) VALUES ('moder', 'moder'), ('admin', 'adm
 /*INSERT INTO user_roles (user_id, role_id) VALUES (5, 6), (6, 5);  */
 
 ALTER TABLE entry ADD COLUMN important BIT;
+
+
+ALTER TABLE users ADD FIRSTNAME VARCHAR(60);
+ALTER TABLE users ADD LASTNAME VARCHAR(60);
+ALTER TABLE users ADD EMAIL VARCHAR(60);
