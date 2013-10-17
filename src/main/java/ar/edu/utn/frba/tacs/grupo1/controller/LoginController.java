@@ -1,9 +1,15 @@
 package ar.edu.utn.frba.tacs.grupo1.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import ar.edu.utn.frba.tacs.grupo1.domain.MyUser;
 
 @Controller
 public class LoginController {
@@ -26,8 +32,18 @@ public class LoginController {
   }
 
   @RequestMapping(value = "/register", method = RequestMethod.GET)
-  public ModelAndView register() {
-    return new ModelAndView("noImplementado");
+  public ModelAndView registerGet(Model model) {
+    model.addAttribute("user", new MyUser());
+    return new ModelAndView("account/register");
+  }
+
+  @RequestMapping(value = "/register", method = RequestMethod.POST)
+  public String registerPost(@Valid MyUser user, BindingResult result) {
+    if (result.hasErrors()) {
+      return "register";
+    }
+
+    return "/home";
   }
 
 }

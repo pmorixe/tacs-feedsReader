@@ -6,7 +6,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import ar.edu.utn.frba.tacs.grupo1.domain.User;
+import ar.edu.utn.frba.tacs.grupo1.domain.MyUser;
 import ar.edu.utn.frba.tacs.grupo1.hibernate.HibernateUtil;
 
 public class UsersDAO {
@@ -24,9 +24,9 @@ public class UsersDAO {
   }
 
   @SuppressWarnings("unchecked")
-  public User getUser(String username) {
+  public MyUser getUser(String username) {
     Session session = getCurrentSession();
-    List<User> userList = new ArrayList<User>();
+    List<MyUser> userList = new ArrayList<MyUser>();
     session.getTransaction().begin();
     Query query = session.createQuery("from User u where u.username = :username");
     query.setParameter("username", username);

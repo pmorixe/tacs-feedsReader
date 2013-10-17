@@ -7,7 +7,6 @@
 
 <html>
 <head>
-	<META http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>TACS FeedsReader</title>
 		<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.css" />" >
 </head>	
