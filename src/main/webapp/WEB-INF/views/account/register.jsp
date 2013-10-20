@@ -7,11 +7,11 @@
 
 <html>
 <head>
-		<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.css" />" >
+		<link rel="stylesheet" href="<c:url value="/resources/dist/css/bootstrap.css" />" >
 </head>	
 <body>
-<div class="container">
-	<h1>Register as User</h1>
+<div class="container" align="center">
+	<h1>Register</h1>
 	<div class="span-12 last">	
 		<form:form modelAttribute="user" action="register" method="post" class="form-search">
 		  	<fieldset>
@@ -36,7 +36,7 @@
 					<br/>
 				</p>
 				<p>
-					<form:label	for="password" path="password" cssErrorClass="error" >Password: </form:label>
+					<form:label	for="password" path="password"  >Password: </form:label>
 					<form:input path="password" class="input-xxlarge"/>
 					<br/>
 				</p>

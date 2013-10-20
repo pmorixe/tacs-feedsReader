@@ -25,6 +25,7 @@ public class FeedUpdaterService {
     int updates = 0;
     for (Entry newEntry : newEntries) {
       if (!CollectionUtils.exists(entries, new EntryAlreadyExistsPredicate(newEntry))) {
+        newEntry.setFeed(feed);
         entries.add(newEntry);
         updates++;
       }

@@ -44,6 +44,7 @@ public class SubscriptionUpdaterService {
         if (feed != null) {
           updates = feedUpdaterService.update(feed, newFeed.getEntries());
         } else {
+          newFeed.setSubscription(subscription);
           subscription.getFeeds().add(newFeed);
           updates++;
         }

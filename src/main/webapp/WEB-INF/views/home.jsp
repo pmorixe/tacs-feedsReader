@@ -7,7 +7,7 @@
 <head>
 	<META http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title><fmt:message key="welcome.title"/></title>
-	<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.css" />" >
+	<link rel="stylesheet" href="<c:url value="/resources/dist/css/bootstrap.css" />" >
 <!-- 	<style type="text/css"> body { background-color: ;  }   </style> -->
 </head>
 <body>
