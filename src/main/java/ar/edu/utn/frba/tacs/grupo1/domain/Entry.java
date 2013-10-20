@@ -35,7 +35,7 @@ public class Entry implements Domain, Serializable {
   @JoinColumn(name = "idFeed")
   private Feed feed;// Padre
 
-  private Boolean important;
+  private Boolean important = Boolean.FALSE;
 
   public Entry(String title, String description, String link, String author, String guid) {
     this.title = title;

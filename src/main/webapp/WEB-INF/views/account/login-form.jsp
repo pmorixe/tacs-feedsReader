@@ -1,48 +1,45 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<%@page contentType="text/html;charset=UTF-8"%>
-<%@page pageEncoding="UTF-8"%>
-<%@ page session="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.css" />" >
-<title>Login page</title>
-<style>.error {	color: red;}
-</style>
-</head>
-<body>
-	<div class="container" align="center" >  
-		<h1>Login page</h1>
-		
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+
+    <title>Signin Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="<c:url value="/resources/dist/css/bootstrap.css" />" />
+  </head>
+
+  <body>
+
+    <div class="container" align="center">
+	
+      <form class="form-signin"  method ="post" action="<c:url value='/j_spring_security_check'/>" style="max-width: 280px;">
 		<p>
 		<c:if test="${error == true}">
-			<b class="error">Invalid login or password.</b>
+			<b class="error" style="color: red;">Invalid login or password.</b>
 		</c:if>
 		</p>
-		
-		<form method="post" action="<c:url value='/j_spring_security_check'/>" >
-		<table>
-		<tbody>
-		<tr>
-		<td>Login:</td>
-		<td><input type="text" name="j_username" id="j_username" placeholder="admin" size="30" maxlength="40"  /></td>
-		</tr>
-		<tr>
-		<td>Password:</td>
-		<td><input type="password" name="j_password" id="j_password" placeholder="admin" size="30" maxlength="32" /></td>
-		</tr>
-		<tr>
-		<td></td>
-		<td><input type="submit" value="Login" /></td>
-		</tr>
-		</tbody>
-		</table>
-		</form>	
-		
-		<p>
-		<a href="${pageContext.request.contextPath}/register">Register</a><br/>
-		</p>
-	</div>
-</body>
-</html>
+        <h2 class="form-signin-heading">Log In</h2>
+        <input type="text" class="form-control" placeholder="Email address" autofocus="" name="j_username" id="j_username">
+        <input type="password" class="form-control" placeholder="Password" name="j_password" id="j_password">
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me"> Remember me(Not implemented yet)
+        </label>
+        <label class="text">
+        <a href="${pageContext.request.contextPath}/register">Register</a>
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" value="Login">Sign in</button>
+      </form>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  
+
+</body></html>
