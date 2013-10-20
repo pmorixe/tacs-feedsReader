@@ -5,38 +5,33 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.utn.frba.tacs.grupo1.domain.Domain;
+import ar.edu.utn.frba.tacs.grupo1.hibernate.HibernateUtil;
 
-@Repository
-@SuppressWarnings({
-  "rawtypes"
-})
-public class DAO {
+public class EntryDAO {
 
-  @Autowired
-  private SessionFactory sessionFactory;
+  private static EntryDAO instance = null;
 
-  private static DAO instance = null;
-
-  public static DAO getInstance() {
+  public static EntryDAO getInstance() {
     if (instance == null)
-      return instance = new DAO();
+      return instance = new EntryDAO();
     return instance;
+  }
+
+  protected static Session getCurrentSession() {
+    return HibernateUtil.getSessionFactory().getCurrentSession();
   }
 
   /**
    * @param domainObject
    * @throws HibernateException
    */
-  @Transactional
   public int save(Domain domainObject) throws HibernateException {
-    Session session = sessionFactory.getCurrentSession();
+    Session session = getCurrentSession();
+    session.beginTransaction();
     session.saveOrUpdate(domainObject);
+    session.getTransaction().commit();
     return domainObject.getId();
   }
 
@@ -44,37 +39,41 @@ public class DAO {
    * @param domainObject
    * @throws HibernateException
    */
-  @Transactional
   public void delete(Domain domainObject) throws HibernateException {
-    Session session = sessionFactory.getCurrentSession();
+    Session session = getCurrentSession();
+    session.beginTransaction();
     session.delete(domainObject);
+    session.getTransaction().commit();
   }
 
-  @Transactional
-  public List<?> list(Class domainClass) {
+  public static List<?> list(@SuppressWarnings("rawtypes") Class domainClass) {
     String className = domainClass.getName();
-    Session session = sessionFactory.getCurrentSession();
+    Session session = getCurrentSession();
+    session.getTransaction().begin();
     List<?> result = (List<?>) session.createQuery("from " + className).list();
+    session.getTransaction().commit();
     return result;
   }
 
-  @Transactional
-  public Object getById(Class domainClass, int id) {
+  public Object getById(@SuppressWarnings("rawtypes") Class domainClass, int id) {
     String className = domainClass.getName();
-    Session session = sessionFactory.getCurrentSession();
+    Session session = getCurrentSession();
+    session.getTransaction().begin();
     List<?> allResults = session.createQuery("from " + className + " where id=" + String.valueOf(id)).list();
+    session.getTransaction().commit();
     if (allResults.size() > 0)
       return allResults.get(0);
     return null;
   }
 
-  @Transactional
-  public List<?> getByFilter(Class domainClass, Method method, int valueRequired) {
+  public List<?> getByFilter(@SuppressWarnings("rawtypes") Class domainClass, Method method, int valueRequired) {
     String className = domainClass.getSimpleName();
     String field = method.getName().replaceFirst("get", "").toLowerCase();
-    Session session = sessionFactory.getCurrentSession();
+    Session session = getCurrentSession();
+    session.getTransaction().begin();
     List<?> allResults = session.createQuery(
         "from " + className + " where " + field + "=" + String.valueOf(valueRequired)).list();
+    session.getTransaction().commit();
     if (allResults.size() > 0)
       return allResults;
     return null;

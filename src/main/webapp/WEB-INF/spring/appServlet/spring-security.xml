@@ -39,7 +39,7 @@
     </authentication-manager>  
 
 	<beans:bean id="customUserDetailsService"
-		class="ar.edu.utn.frba.tacs.grupo1.security.CustomUserDetailsService">
+		class="ar.edu.utn.frba.tacs.grupo1.springServices.CustomUserDetailsService">
 	</beans:bean>
 
 </beans:beans>

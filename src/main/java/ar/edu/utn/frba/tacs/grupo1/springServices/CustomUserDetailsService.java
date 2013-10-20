@@ -1,9 +1,10 @@
-package ar.edu.utn.frba.tacs.grupo1.security;
+package ar.edu.utn.frba.tacs.grupo1.springServices;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -18,9 +19,12 @@ import ar.edu.utn.frba.tacs.grupo1.domain.MyUser;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
+  @Autowired
+  private UsersDAO usersDAO;
+
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-    MyUser domainUser = UsersDAO.getInstance().getUser(username);
+    MyUser domainUser = usersDAO.getUser(username);
 
     boolean enabled = true;
     boolean accountNonExpired = true;

@@ -30,7 +30,7 @@ public class SubscriptionUpdaterTest {
     thread4.start();
     thread5.start();
     thread6.start();
-    List<?> list = DAO.list(Subscription.class);
+    List<?> list = DAO.getInstance().list(Subscription.class);
 
     Subscription realSubscription = (Subscription) list.get(0);
 

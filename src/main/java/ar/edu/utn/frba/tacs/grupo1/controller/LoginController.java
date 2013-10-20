@@ -2,7 +2,9 @@ package ar.edu.utn.frba.tacs.grupo1.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +16,9 @@ import ar.edu.utn.frba.tacs.grupo1.updaterServices.MyUserUpdaterServices;
 
 @Controller
 public class LoginController {
+
+  @Autowired
+  private MyUserUpdaterServices myUserUpdaterServices;
 
   @RequestMapping(value = "/login-form", method = RequestMethod.GET)
   public ModelAndView loginForm() {
@@ -38,10 +43,11 @@ public class LoginController {
     return new ModelAndView("account/register");
   }
 
+  @Transactional
   @RequestMapping(value = "/register", method = RequestMethod.POST)
   public ModelAndView registerPost(@Valid MyUser user, BindingResult result) {
     ModelAndView modelAndView = new ModelAndView("/account/login-form");
-    String welcomeUsername = MyUserUpdaterServices.getInstance().validateAndRegisterUser(user);
+    String welcomeUsername = myUserUpdaterServices.validateAndRegisterUser(user);
     if (welcomeUsername == null) {
       modelAndView.addObject("error", true);
     }
