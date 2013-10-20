@@ -2,24 +2,20 @@ package ar.edu.utn.frba.tacs.grupo1.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 //Representa un Mensaje de Feed, un articulo o lo que sea
+@Entity
+@Table(name = "entry")
 public class Entry implements Domain, Serializable {
-
-  public Entry(String title, String description, String link, String author, String guid) {
-    this.title = title;
-    this.description = description;
-    this.link = link;
-    this.author = author;
-    this.guid = guid;
-
-  }
-
-  public Entry() {
-  }
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,10 +31,25 @@ public class Entry implements Domain, Serializable {
 
   private String guid;
 
+  @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinColumn(name = "idFeed")
   private Feed feed;// Padre
-  
+
   private Boolean important;
-  
+
+  public Entry(String title, String description, String link, String author, String guid) {
+    this.title = title;
+    this.description = description;
+    this.link = link;
+    this.author = author;
+    this.guid = guid;
+
+  }
+
+  public Entry() {
+    // TODO Auto-generated constructor stub
+  }
+
   public int getId() {
     return id;
   }

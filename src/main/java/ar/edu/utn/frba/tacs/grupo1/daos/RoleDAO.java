@@ -1,11 +1,18 @@
 package ar.edu.utn.frba.tacs.grupo1.daos;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.utn.frba.tacs.grupo1.domain.Role;
-import ar.edu.utn.frba.tacs.grupo1.hibernate.HibernateUtil;
 
+@Repository
 public class RoleDAO {
+
+  @Autowired
+  private SessionFactory sessionFactory;
 
   private static RoleDAO instance = null;
 
@@ -15,16 +22,10 @@ public class RoleDAO {
     return instance;
   }
 
-  protected static Session getCurrentSession() {
-    return HibernateUtil.getSessionFactory().getCurrentSession();
-  }
-
-  @SuppressWarnings("unchecked")
+  @Transactional
   public Role getRole(int id) {
-    Session session = getCurrentSession();
-    session.getTransaction().begin();
+    Session session = sessionFactory.getCurrentSession();
     Role role = (Role) session.load(Role.class, id);
-    session.getTransaction().commit();
     return role;
   }
 }

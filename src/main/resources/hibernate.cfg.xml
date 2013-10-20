@@ -5,38 +5,41 @@
 
 <hibernate-configuration>
 
-    <session-factory>
+	<session-factory>
 
-        <!-- Database connection settings -->
-        <property name="jdbc.database">javax.sql.DataSource</property>
-        <property name="connection.url">jdbc:mysql://ec2-23-21-211-172.compute-1.amazonaws.com:3306/feedsreader</property>
-        <property name="connection.username">tacs2c2013</property>
-        <property name="connection.password">tacs2c2013</property>
+		<!-- Database connection settings -->
+		<property name="jdbc.database">javax.sql.DataSource</property>
+		<property name="connection.url">jdbc:mysql://ec2-23-21-211-172.compute-1.amazonaws.com:3306/feedsreader</property>
+		<property name="connection.username">tacs2c2013</property>
+		<property name="connection.password">tacs2c2013</property>
 
-        <!-- JDBC connection pool (use the built-in) -->
-        <property name="connection.pool_size">1</property>
+		<!-- JDBC connection pool (use the built-in) -->
+		<property name="connection.pool_size">1</property>
 
-        <!-- SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+		<!-- SQL dialect -->
+		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
 
-        <!-- Enable Hibernate's automatic session context management -->
-        <property name="current_session_context_class">thread</property>
+		<!-- Enable Hibernate's automatic session context management -->
+		<property name="current_session_context_class">thread</property>
 
-        <!-- Disable the second-level cache  -->
-        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+		<!-- Disable the second-level cache -->
+		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
 
-        <!-- Echo all executed SQL to stdout -->
-        <property name="show_sql">true</property>
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
 
-        <!-- Drop and re-create the database schema on startup -->
-        <property name="hbm2ddl.auto">update</property>
+		<!-- Drop and re-create the database schema on startup -->
+		<property name="hbm2ddl.auto">update</property>
 
-        <mapping resource="ar/edu/utn/frba/tacs/grupo1/domain/Subscription.hbm.xml"/>
-        <mapping resource="ar/edu/utn/frba/tacs/grupo1/domain/Feed.hbm.xml"/>
-        <mapping resource="ar/edu/utn/frba/tacs/grupo1/domain/Entry.hbm.xml"/>
-        <mapping class="ar.edu.utn.frba.tacs.grupo1.domain.MyUser"/>
-        <mapping class="ar.edu.utn.frba.tacs.grupo1.domain.Role"/>
-    
-    </session-factory>
+		<!-- <mapping resource="ar/edu/utn/frba/tacs/grupo1/domain/Subscription.hbm.xml"/> -->
+		<!-- <mapping resource="ar/edu/utn/frba/tacs/grupo1/domain/Feed.hbm.xml"/> -->
+		<!-- <mapping resource="ar/edu/utn/frba/tacs/grupo1/domain/Entry.hbm.xml"/> -->
+		<mapping class="ar.edu.utn.frba.tacs.grupo1.domain.MyUser" />
+		<mapping class="ar.edu.utn.frba.tacs.grupo1.domain.Role" />
+		<mapping class="ar.edu.utn.frba.tacs.grupo1.domain.Subscription" />
+		<mapping class="ar.edu.utn.frba.tacs.grupo1.domain.Feed" />
+		<mapping class="ar.edu.utn.frba.tacs.grupo1.domain.Entry" />
+
+	</session-factory>
 
 </hibernate-configuration>

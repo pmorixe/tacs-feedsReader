@@ -5,10 +5,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "subscription")
 public class Subscription implements Domain, Serializable {
 
   @Id
@@ -19,6 +25,7 @@ public class Subscription implements Domain, Serializable {
 
   private Date since;
 
+  @OneToMany(mappedBy = "subscription", cascade = CascadeType.ALL)
   private List<Feed> feeds = new ArrayList<Feed>();
 
   public Subscription(String url) {

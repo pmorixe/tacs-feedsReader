@@ -1,11 +1,18 @@
 package ar.edu.utn.frba.tacs.grupo1.updaterServices;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import ar.edu.utn.frba.tacs.grupo1.daos.RoleDAO;
 import ar.edu.utn.frba.tacs.grupo1.daos.UsersDAO;
 import ar.edu.utn.frba.tacs.grupo1.domain.MyUser;
 import ar.edu.utn.frba.tacs.grupo1.domain.Role;
 
+@Service
 public class MyUserUpdaterServices {
+
+  @Autowired
+  private UsersDAO UsersDAO;
 
   private static MyUserUpdaterServices instance = null;
 
@@ -16,11 +23,11 @@ public class MyUserUpdaterServices {
   }
 
   private boolean validateUser(MyUser newUser) {
-    return UsersDAO.getInstance().getUser(newUser.getUsername()) == null;
+    return UsersDAO.getUser(newUser.getUsername()) == null;
   }
 
   private String registerUser(MyUser newUser) {
-    UsersDAO.getInstance().registerUser(newUser);
+    UsersDAO.registerUser(newUser);
     return newUser.getUsername();
   }
 

@@ -5,13 +5,22 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * La idea es representar una URL, hacia un RSS. Formato http://..../algo.rss
  */
+@Entity
+@Table(name = "feed")
 public class Feed implements Domain, Serializable {
 
   @Id
@@ -32,8 +41,11 @@ public class Feed implements Domain, Serializable {
 
   private Date createdDate; // Fecha de actualización
 
+  @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinColumn(name = "idSubscription")
   private Subscription subscription;// Subscripción padre
 
+  @OneToMany(mappedBy = "feed", cascade = CascadeType.ALL)
   private List<Entry> entries = new ArrayList<Entry>(); // Lista de actualizaciones
 
   public Feed(String title, String url, String summary, String language, String copyright, String pubDate) {
