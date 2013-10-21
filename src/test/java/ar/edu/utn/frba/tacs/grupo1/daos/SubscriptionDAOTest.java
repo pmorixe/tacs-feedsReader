@@ -5,11 +5,13 @@ import static junit.framework.Assert.assertNotNull;
 
 import java.util.List;
 
-import org.apache.commons.collections.Closure;
-import org.apache.commons.collections.CollectionUtils;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import ar.edu.utn.frba.tacs.grupo1.domain.Entry;
 import ar.edu.utn.frba.tacs.grupo1.domain.Feed;
@@ -18,6 +20,10 @@ import ar.edu.utn.frba.tacs.grupo1.domain.builders.EntryBuilder;
 import ar.edu.utn.frba.tacs.grupo1.domain.builders.FeedBuilder;
 import ar.edu.utn.frba.tacs.grupo1.domain.builders.SubscriptionBuilder;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {
+  "classpath:/servlet-Test-context.xml"
+})
 public class SubscriptionDAOTest {
 
   private Subscription subscription;
@@ -36,7 +42,7 @@ public class SubscriptionDAOTest {
     this.feed = new Feed("feed title", "feed link", "feed summary", "spanish", "cprght", "a pubdate");
   }
 
-  // @Test
+  @Test
   public void testSaveSubscriptionAndGetFeeds() {
     feed.getEntries().add(entry);
     subscription.getFeeds().add(feed);
@@ -52,7 +58,7 @@ public class SubscriptionDAOTest {
     assert (subscription.getAllEntries().size() > 0);
   }
 
-  // @Test
+  @Test
   public void testGetSubscriptionsById() {
     int createdId = DAO.save(this.subscription);
     subscription = (Subscription) DAO.getById(Subscription.class, createdId);
@@ -60,22 +66,15 @@ public class SubscriptionDAOTest {
     assert (subscription.getId() == createdId);
   }
 
-  // @Test
+  @Test
   public void testGetSubscriptionsList() {
     feed.getEntries().add(entry);
     subscription.getFeeds().add(feed);
     subscription.getFeeds().add(feed);
     subscription.getFeeds().add(feed);
-    DAO.getInstance().save(this.subscription);
-    List<Subscription> list = (List<Subscription>) DAO.getInstance().list(Subscription.class);
-    CollectionUtils.forAllDo(list, new Closure() {
+    DAO.save(this.subscription);
+    List<Subscription> list = (List<Subscription>) DAO.list(Subscription.class);
 
-      public void execute(Object arg0) {
-        Subscription subs = (Subscription) arg0;
-        System.out.println("\n" + subs.getFeeds().size() + ":" + subs.getUrl() + "\n");
-
-      }
-    });
     assertFalse(list.isEmpty());
   }
 
@@ -89,7 +88,7 @@ public class SubscriptionDAOTest {
 
   @After
   public void tearDownSubscription() {
-    DAO.getInstance().delete(this.subscription);
+    DAO.delete(this.subscription);
   }
 
   public void simplePersistenTest() {
