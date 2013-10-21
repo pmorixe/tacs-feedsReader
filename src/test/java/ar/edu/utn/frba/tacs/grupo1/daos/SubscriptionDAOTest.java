@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.utn.frba.tacs.grupo1.domain.Entry;
 import ar.edu.utn.frba.tacs.grupo1.domain.Feed;
@@ -20,6 +21,7 @@ import ar.edu.utn.frba.tacs.grupo1.domain.builders.EntryBuilder;
 import ar.edu.utn.frba.tacs.grupo1.domain.builders.FeedBuilder;
 import ar.edu.utn.frba.tacs.grupo1.domain.builders.SubscriptionBuilder;
 
+@Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
   "classpath:/servlet-Test-context.xml"
