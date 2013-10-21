@@ -56,6 +56,13 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>${spring.security.version}</version>
 		</dependency>
+		<!-- SPRING TEST -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>3.1.1.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
 
 
 		<!-- Logging -->
@@ -126,7 +133,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.7</version>
+			<version>4.10</version>
 			<scope>test</scope>
 		</dependency>
 
