@@ -7,36 +7,37 @@
 	http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
 
-    <http >  
-<!--         <intercept-url pattern="/*" access="ROLE_MODERATOR"/>   -->
-<!--         <intercept-url pattern="/admin/*" access="ROLE_ADMIN"/>   -->
-<!-- 		<intercept-url pattern="/subscription/*" access="ROLE_USER"/> -->
-		<intercept-url pattern="/login-form" access="ROLE_ANONYMOUS"/>
-		<intercept-url pattern="/register" access="ROLE_ANONYMOUS"/>
-		<intercept-url pattern="/error-login" access="ROLE_ADMIN,ROLE_USER,ROLE_MODERATOR,ROLE_ANONYMOUS"/> 
-		<intercept-url pattern="/j_spring_security_check" access="ROLE_ANONYMOUS"/>
-		<intercept-url pattern="/*" access="ROLE_ADMIN,ROLE_USER,ROLE_MODERATOR"/>
-		
-         <form-login 	login-page="/login-form"
-         				default-target-url="/success-login"  
-         			 	login-processing-url="/j_spring_security_check"
-         				always-use-default-target="true" 
-         				authentication-failure-url="/error-login"/>
-        <logout logout-success-url="/login-form"/>
-    </http>
+	<http>
+		<!-- <intercept-url pattern="/*" access="ROLE_MODERATOR"/> -->
+		<!-- <intercept-url pattern="/admin/*" access="ROLE_ADMIN"/> -->
+		<!-- <intercept-url pattern="/subscription/*" access="ROLE_USER"/> -->
+		<intercept-url pattern="/login-form" access="ROLE_ANONYMOUS" />
+		<intercept-url pattern="/register" access="ROLE_ANONYMOUS" />
+		<intercept-url pattern="/error-login"
+			access="ROLE_ADMIN,ROLE_USER,ROLE_MODERATOR,ROLE_ANONYMOUS" />
+		<intercept-url pattern="/j_spring_security_check"
+			access="ROLE_ANONYMOUS" />
+		<intercept-url pattern="/*"
+			access="ROLE_ADMIN,ROLE_USER,ROLE_MODERATOR" />
 
-    <authentication-manager>  
-        <authentication-provider user-service-ref="customUserDetailsService"> 
-        <password-encoder hash="plaintext"/>
-            
-        </authentication-provider>
-        <authentication-provider>
-        <user-service>
-                    <user name="jimi" password="jimis" authorities="ROLE_USER, ROLE_ADMIN" />
-        			<user name="admin" password="admin" authorities="ROLE_USER" />
-            </user-service>
-        </authentication-provider>  
-    </authentication-manager>  
+		<form-login login-page="/login-form" default-target-url="/success-login"
+			login-processing-url="/j_spring_security_check"
+			always-use-default-target="true" authentication-failure-url="/error-login" />
+		<logout logout-success-url="/login-form" />
+	</http>
+
+	<authentication-manager>
+		<authentication-provider user-service-ref="customUserDetailsService">
+			<password-encoder hash="plaintext" />
+
+		</authentication-provider>
+		<authentication-provider>
+			<user-service>
+				<user name="jimi" password="jimis" authorities="ROLE_USER, ROLE_ADMIN" />
+				<user name="admin" password="admin" authorities="ROLE_USER" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
 
 	<beans:bean id="customUserDetailsService"
 		class="ar.edu.utn.frba.tacs.grupo1.springServices.CustomUserDetailsService">

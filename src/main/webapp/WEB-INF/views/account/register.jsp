@@ -7,6 +7,7 @@
 
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="<c:url value="/resources/dist/css/bootstrap.css" />" >
 </head>	
 <body>

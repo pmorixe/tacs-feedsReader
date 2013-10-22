@@ -7,6 +7,7 @@
 
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Type" content="charset=UTF-8"/>
 <title>TACS FeedsReader</title>
 <link rel="stylesheet"
@@ -27,32 +28,29 @@
   							<div class="col-lg-12">
     						<div class="input-group">
       							<span class="input-group-addon">
-        							<input type="checkbox" value="${entry.important}" >
       							</span>
-      							<a href="${entry.link}">
-								<h1>${entry.title}</h1>	</a>
-								<h3>${entry.description}</h3>
-   							</div><!-- /input-group -->
-  							</div><!-- /.col-lg-6 -->
+
+							<c:choose>
+								<c:when test="${entry.important==true}">
+									<i class="glyphicon glyphicon-star"></i>
+								</c:when>
+								<c:otherwise>
+
+									<a href="/subscription/important?id=${entry.id}"> <i
+										class="glyphicon glyphicon-star-empty"></i>
+									</a>
+
+								</c:otherwise>
+							</c:choose>
+							<a href="${entry.link}">
+								<h1>${entry.title}</h1>
+							</a>
+							<h3>${entry.description}</h3>
 							</div>
-<%-- 							<c:choose> --%>
-<%-- 								<c:when test="${entry.important==true}"> --%>
-<!-- 									<i class="icon-star"></i> -->
-<%-- 								</c:when> --%>
-<%-- 								<c:otherwise> --%>
-
-<%-- 									<a href="/subscription/important?id=${entry.id}"> <i --%>
-<!-- 										class="icon-star-empty"></i> -->
-<!-- 									</a> -->
-
-<%-- 								</c:otherwise> --%>
-<%-- 							</c:choose> --%>
-<%-- 							<a href="${entry.link}"> --%>
-<%-- 								<h1>${entry.title}</h1> --%>
-<!-- 							</a> -->
-<%-- 							<h3>${entry.description}</h3> --%>
-
+  							</div>
+							</div>
 						</c:forEach>
+						
 					</fieldset>
 					<a href="/" class="btn btn-default">Back to home</a>
 				</form:form>
